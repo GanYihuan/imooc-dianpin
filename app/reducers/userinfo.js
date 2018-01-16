@@ -1,4 +1,5 @@
-import * as userTypes from '../constants/userinfo'
+import * as userTypes from '../constants/userinfo';
+
 
 // redux
 // 第一步：计算规则

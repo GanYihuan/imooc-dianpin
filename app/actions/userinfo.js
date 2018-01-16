@@ -1,4 +1,5 @@
-import * as userTypes from '../constants/userinfo'
+import * as userTypes from '../constants/userinfo';
+
 
 export function update(data){
 	return {

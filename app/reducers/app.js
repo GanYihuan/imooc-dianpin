@@ -1,4 +1,5 @@
-import * as appTypes from '../constants/app'
+import * as appTypes from '../constants/app';
+
 
 export default function app(state = {}, action) {
   switch (action.type) {

@@ -1,30 +1,25 @@
-import React, {Component} from 'react'
-import PureRenderMixin from 'react-addons-pure-render-mixin'
-import {HashRouter as Router, Route, Switch, Redirect} from 'react-router-dom'
-import createBrowserHistory from 'history/createBrowserHistory'
-
+import React, {Component} from 'react';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
+import {HashRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
+import createBrowserHistory from 'history/createBrowserHistory';
 // redux流
-import {bindActionCreators} from 'redux'
-import {connect} from 'react-redux'
-import * as userInfoActionsFromOtherFiles from './actions/userinfo'
-
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import * as userInfoActionsFromOtherFiles from './actions/userinfo';
 // 本地缓存配置
-import {CITYNAME} from './config/localStorekey'
-import LocalStore from './util/localStore'
-
+import {CITYNAME} from './config/localStorekey';
+import LocalStore from './util/localStore';
 // bundle模型用来异步加载组件
 import Bundle from './bundle';
-
 // 不需要异步加载的组件
-import HomeContainer from './containers/Home'
-import FooterContainer from './components/Footer'
-
+import HomeContainer from './containers/Home';
+import FooterContainer from './components/Footer';
 // 异步加载文件
-import CityContainer from 'bundle-loader?lazy!./containers/City'
-import SearchContainer from 'bundle-loader?lazy!./containers/Search'
-import UserContainer from 'bundle-loader?lazy!./containers/user'
-import DetailContainer from 'bundle-loader?lazy!./containers/Detail'
-import NotFoundContainer from 'bundle-loader?lazy!./containers/NotFound'
+import CityContainer from 'bundle-loader?lazy!./containers/City';
+import SearchContainer from 'bundle-loader?lazy!./containers/Search';
+import UserContainer from 'bundle-loader?lazy!./containers/user';
+import DetailContainer from 'bundle-loader?lazy!./containers/Detail';
+import NotFoundContainer from 'bundle-loader?lazy!./containers/NotFound';
 
 
 const City = (props) => (
@@ -149,6 +144,7 @@ function mapStateToProps(state) {
   return {}
 }
 
+// 第四步：触发规则变化
 function mapDispatchToProps(dispatch) {
   return {
     userInfoActions: bindActionCreators(userInfoActionsFromOtherFiles, dispatch)

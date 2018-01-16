@@ -1,4 +1,5 @@
-import * as appTypes from '../constants/app'
+import * as appTypes from '../constants/app';
+
 
 export function menu(data){
 	return {

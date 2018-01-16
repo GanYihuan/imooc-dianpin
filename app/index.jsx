@@ -11,7 +11,6 @@ FastClick.attach(document.body);
 const store = configureStore();
 
 import AppContainer from './appContainer'
-
 import './static/css/common.less'
 import './static/css/font.less'
 
