@@ -22,7 +22,7 @@ class Category extends Component {
           index: index
         })
       }
-    }
+    };
 
     return (
         <div id={styles["home-category"]}>

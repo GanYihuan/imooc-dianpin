@@ -1,5 +1,6 @@
-import 'whatwg-fetch'
-import 'es6-promise'
+import 'whatwg-fetch';
+import 'es6-promise';
+
 
 function objparams(obj) {
   let result = '';

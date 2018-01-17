@@ -1,4 +1,5 @@
-import {get} from '../get'
+import {get} from '../get';
+
 
 export function getDetail(id) {
   const result = get('/api/detail/info/' + id);

@@ -1,55 +1,57 @@
-import React,{Component} from 'react'
-import PureRenderMixin from 'react-addons-pure-render-mixin'
+import React, {Component} from 'react';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
+import styles from './style.less';
 
-import styles from './style.less'
 
-class LoadMore extends Component{
-	constructor(props) {
-	  super(props);
-	  this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
-	}
-	render(){
-		return (
-				<div className={styles["load-more"]} ref="wrapper">
-					{
-						this.props.isLoadingMore
-						? <span>加载中...</span>
-						: <span onClick={this.loadMoreHandle.bind(this)}>加载更多</span>
-					}
-				</div>
-			)
-	}
-	componentDidMount(){
+class LoadMore extends Component {
+  constructor(props) {
+    super(props);
+    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+  }
 
-		const wrapper = this.refs.wrapper
-		const loadMoreFn = this.props.loadMoreFn
+  render() {
+    return (
+        <div className={styles["load-more"]} ref="wrapper">
+          {
+            this.props.isLoadingMore
+                ? <span>加载中...</span>
+                : <span onClick={this.loadMoreHandle.bind(this)}>加载更多</span>
+          }
+        </div>
+    )
+  }
 
-		function callback(){
-			const top = wrapper.getBoundingClientRect().top
-			const windowHeight = window.screen.height
+  componentDidMount() {
+    const wrapper = this.refs.wrapper;
+    const loadMoreFn = this.props.loadMoreFn;
 
-			if(top && top < windowHeight){
-				loadMoreFn()
-			}
-		}
+    function callback() {
+      const top = wrapper.getBoundingClientRect().top;
+      const windowHeight = window.screen.height;
 
-		//滚动事件
-		let timeAction;
-		window.addEventListener('scroll',()=>{
-			if(this.props.isLoadingMore){
-				return;
-			}
+      if (top && top < windowHeight) {
+        loadMoreFn()
+      }
+    }
 
-			if(timeAction){
-				clearTimeout(timeAction);
-			}
+    // 滚动事件
+    let timeAction;
+    window.addEventListener('scroll', () => {
+      if (this.props.isLoadingMore) {
+        return;
+      }
 
-			timeAction = setTimeout(callback,50);
-		});
-	}
-	loadMoreHandle(){
-		this.props.loadMoreFn();
-	}
+      if (timeAction) {
+        clearTimeout(timeAction);
+      }
+
+      timeAction = setTimeout(callback, 50);
+    });
+  }
+
+  loadMoreHandle() {
+    this.props.loadMoreFn();
+  }
 }
 
 export default LoadMore
