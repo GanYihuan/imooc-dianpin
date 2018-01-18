@@ -39,6 +39,7 @@ class SearchList extends Component {
     )
   }
 
+  // 页面初次渲染
   componentDidMount() {
     // 获取首页数据
     this.loadFirstPageData()
@@ -46,10 +47,10 @@ class SearchList extends Component {
 
   // 获取首页数据
   loadFirstPageData() {
-    const cityName = this.props.userinfo.cityName
-    const keyword = this.props.keyword || ''
-    const category = this.props.category
-    const result = getSearchData(0, cityName, category, keyword)
+    const cityName = this.props.userinfo.cityName;
+    const keyword = this.props.keyword || '';
+    const category = this.props.category;
+    const result = getSearchData(0, cityName, category, keyword);
     this.resultHandle(result)
   }
 
@@ -59,7 +60,6 @@ class SearchList extends Component {
     this.setState({
       isLoadingMore: true
     });
-
     const cityName = this.props.userinfo.cityName;
     const page = this.state.page;
     const keyword = this.props.keyword || '';
@@ -71,11 +71,10 @@ class SearchList extends Component {
   // 处理数据
   resultHandle(result) {
     // 增加 page 计数
-    const page = this.state.page
+    const page = this.state.page;
     this.setState({
       page: page + 1
-    })
-
+    });
     result.then(res => {
       if (res.ok) {
         return res.json()
@@ -88,7 +87,6 @@ class SearchList extends Component {
     }).then(json => {
       const hasMore = json.hasMore;
       const data = json.data;
-
       this.setState({
         hasMore: hasMore,
         // 注意，这里讲最新获取的数据，拼接到原数据之后，使用 concat 函数
@@ -100,19 +98,17 @@ class SearchList extends Component {
     })
   }
 
+  // 页面再次渲染
   // 处理重新搜索
   componentDidUpdate(prevProps, prevState) {
     const keyword = this.props.keyword;
     const category = this.props.category;
-
     // 搜索条件完全相等时，忽略。重要！！！
     if (keyword === prevProps.keyword && category === prevProps.category) {
       return
     }
-
     // 重置 state
     this.setState(initialState);
-
     // 重新加载数据
     this.loadFirstPageData()
   }

@@ -48,7 +48,6 @@ class SearchInput extends Component {
     if (e.keyCode !== 13) {
       return;
     }
-
     this.props.enterHandle(this.state.value);
   }
 }
