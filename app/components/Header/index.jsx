@@ -1,6 +1,6 @@
-import React, {Component} from 'react'
-import PureRenderMixin from 'react-addons-pure-render-mixin'
-import styles from './style.less'
+import React, {Component} from 'react';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
+import styles from './style.less';
 
 
 class Header extends Component {
