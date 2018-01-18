@@ -3,7 +3,6 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as appActions from '../../actions/app';
-
 import Header from '../../components/Header';
 import Info from './subpage/Info';
 import Comment from './subpage/Comment';
