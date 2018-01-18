@@ -1,16 +1,14 @@
-import React, {Component} from 'react'
-import PureRenderMixin from 'react-addons-pure-render-mixin'
-import {bindActionCreators} from 'redux'
-import {connect} from 'react-redux'
-import Header from '../../components/Header'
+import React, {Component} from 'react';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import Header from '../../components/Header';
+import CurrentCity from '../../components/CurrentCity';
+import CityList from '../../components/CityList';
+import * as userinfoActions from '../../actions/userinfo';
+import {CITYNAME} from '../../config/localStorekey';
+import LocalStore from '../../util/localStore';
 
-import CurrentCity from '../../components/CurrentCity'
-import CityList from '../../components/CityList'
-
-import * as userinfoActions from '../../actions/userinfo'
-
-import {CITYNAME} from '../../config/localStorekey'
-import LocalStore from '../../util/localStore'
 
 class City extends Component {
   constructor(props) {
@@ -29,7 +27,7 @@ class City extends Component {
   }
 
   changeCity(newCity) {
-    if (newCity === null) {
+    if (newCity == null) {
       return
     }
 

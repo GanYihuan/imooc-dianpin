@@ -1,6 +1,7 @@
-import React from 'react'
-import PureRenderMixin from 'react-addons-pure-render-mixin'
-import styles from './style.less'
+import React from 'react';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
+import styles from './style.less';
+
 
 class CityList extends React.Component {
   constructor(props, context) {
