@@ -15,6 +15,7 @@ class Detail extends Component {
   }
 
   render() {
+    // 获取路由appContainer里的参数id,  path="/detail/:id"
     const id = this.props.match.params.id;
     return (
         <div>

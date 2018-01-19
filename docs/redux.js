@@ -12,6 +12,8 @@ import { createStore } from 'redux'
  * follows a different convention (such as function maps) if it makes sense for your
  * project.
  */
+
+
 // 第一步：计算规则
 function counter(state = 0, action) {
   switch (action.type) {
@@ -47,3 +49,23 @@ store.dispatch({ type: 'INCREMENT' });
 // 2
 store.dispatch({ type: 'DECREMENT' });
 // 1
+
+
+
+
+// 第一步：计算规则
+//    /Users/ganyihuan/Documents/Code/Web/RN/dianpin/app/reducers/userinfo.js
+//    /Users/ganyihuan/Documents/Code/Web/RN/dianpin/app/reducers/index.js
+
+
+// 第二步: 根据规则生成 store
+//    /Users/ganyihuan/Documents/Code/Web/RN/dianpin/app/store/configureStore.js
+
+
+// 第三步：定义数据变化后派发规则
+//    /Users/ganyihuan/Documents/Code/Web/RN/dianpin/app/index.jsx
+
+
+// 第三步：定义数据变化后派发规则
+// 第四步：触发规则变化
+//    /Users/ganyihuan/Documents/Code/Web/RN/dianpin/app/containers/Home/index.jsx

@@ -43,7 +43,8 @@ class Home extends Component {
 }
 
 // 第三步：定义数据变化后派发规则
-// userinfo: 变成props里的一个能用的参数
+// reducers/index.js: 里的返回值能成为state
+// userinfo: 变成props里的一个能用的参数userinfo
 function mapStateToProps(state) {
   return {
     userinfo: state.userinfo
@@ -51,12 +52,14 @@ function mapStateToProps(state) {
 }
 
 // 第四步：触发规则变化
+// appActions: 第一步的 action
 function mapDispatchToProps(dispatch) {
   return {
     appActionList: bindActionCreators(appActions, dispatch)
   }
 }
 
+// Redux
 export default connect(
     mapStateToProps,
     mapDispatchToProps

@@ -91,6 +91,7 @@ class AppContainer extends Component {
                         )}
                     />
                     <Route
+                        {/* /: 参数 */}
                         path="/search/:category/:keyword?"
                         render={props => (
                             <Search props={props}/>
