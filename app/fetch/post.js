@@ -1,4 +1,6 @@
+// fetch, 替代Ajax
 import 'whatwg-fetch';
+// 向后兼容
 import 'es6-promise';
 
 
@@ -7,6 +9,8 @@ function objparams(obj) {
   let item;
 
   for (item in obj) {
+    // {key1: 'value1', key2: 'value2'}
+    // key1=value1&key2=value2
     result += '&' + item + '=' + encodeURIComponent(obj[item]);
   }
 
@@ -17,6 +21,7 @@ function objparams(obj) {
   return result;
 }
 
+
 export function post(url, paramsObj) {
   let result = fetch(url, {
     method: "POST",
@@ -25,6 +30,7 @@ export function post(url, paramsObj) {
       'Accept': 'application/json,text/plain,*/*',
       'Content-Type': 'application/x-www-form-urlencoded'
     },
+    // body: 参数
     body: objparams(paramsObj)
   });
 

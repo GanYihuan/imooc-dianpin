@@ -6,7 +6,7 @@ import createBrowserHistory from 'history/createBrowserHistory';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as userInfoActionsFromOtherFiles from './actions/userinfo';
-// 本地缓存配置
+// 本地缓存配置,localstorage
 import {CITYNAME} from './config/localStorekey';
 import LocalStore from './util/localStore';
 // bundle模型用来异步加载组件
@@ -125,10 +125,13 @@ class AppContainer extends Component {
 
   componentDidMount() {
     let cityName = LocalStore.getItem(CITYNAME);
-    if (cityName === null) {
+
+    if (cityName == null) {
       cityName = '上海'
     }
 
+    // 城市信息保存到redux中，redux能实现数据共享
+    // update:   /Users/ganyihuan/Documents/Code/Web/RN/dianpin/app/actions/userinfo.js
     this.props.userInfoActions.update({
       cityName: cityName
     });

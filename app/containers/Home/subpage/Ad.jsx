@@ -27,6 +27,7 @@ class Ad extends Component {
   }
 
   componentDidMount() {
+    // koa接口
     const result = getAdData();
     result
         .then(res => {

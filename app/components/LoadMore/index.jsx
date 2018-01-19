@@ -11,7 +11,10 @@ class LoadMore extends Component {
 
   render() {
     return (
-        <div className={styles["load-more"]} ref="wrapper">
+        <div
+            className={styles["load-more"]}
+            ref="wrapper"
+        >
           {
             this.props.isLoadingMore
                 ? <span>加载中...</span>
@@ -26,25 +29,29 @@ class LoadMore extends Component {
     const loadMoreFn = this.props.loadMoreFn;
 
     function callback() {
+      // 距离页面顶部距离
       const top = wrapper.getBoundingClientRect().top;
+      // 屏幕高度
       const windowHeight = window.screen.height;
 
       if (top && top < windowHeight) {
-        loadMoreFn()
+        // wrapper暴露时加载
+        loadMoreFn();
       }
     }
 
     // 滚动事件
     let timeAction;
     window.addEventListener('scroll', () => {
+      // 正在加载时不做处理
       if (this.props.isLoadingMore) {
         return;
       }
 
+      // 先清理时间设置
       if (timeAction) {
         clearTimeout(timeAction);
       }
-
       timeAction = setTimeout(callback, 50);
     });
   }

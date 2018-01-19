@@ -36,6 +36,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
+    //    /Users/ganyihuan/Documents/Code/Web/RN/dianpin/app/actions/app.js
     this.props.appActionList.menu({
       location: 1
     });

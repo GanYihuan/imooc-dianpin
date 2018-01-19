@@ -12,13 +12,13 @@ class List extends Component {
     super(props);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = {
-      // 记录当前状态
+      // 有没有更多数据？需要后端返回
       hasMore: false,
       // 储存列表信息
       data: [],
-      // 记录状态，是加载中吗？
+      // 是加载中吗？
       isLoadingMore: false,
-      // 下一页页码
+      // 记录下一页页码，首页为0
       page: 0
     }
   }
@@ -39,8 +39,7 @@ class List extends Component {
                     isLoadingMore={this.state.isLoadingMore}
                     loadMoreFn={this.loadMoreData.bind(this)}
                 />
-                :
-                ''
+                : ''
           }
         </div>
     )
@@ -52,6 +51,7 @@ class List extends Component {
     this.resultHandle(result);
   }
 
+  // 获取数据
   loadMoreData() {
     // 记录状态
     this.setState({
@@ -78,14 +78,17 @@ class List extends Component {
           } else {
             console.log("当前城市：" + this.props.cityName);
             console.log("当前页码：" + this.state.page);
+
             return ListData;
           }
         })
         .then(json => {
           const data = json.data;
           const hasMore = json.hasMore;
+
           this.setState({
             hasMore: hasMore,
+            // 数据拼接上去
             data: this.state.data.concat(data),
             isLoadingMore: false
           })

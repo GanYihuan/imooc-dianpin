@@ -2,13 +2,13 @@ const Koa = require('koa');
 const app = new Koa();
 let router = require('koa-router')();
 
-//首页广告
+// 首页广告
 let homeAdData = require('./home/ad.js');
 router.get('/api/homead', function (ctx, next) {
   ctx.body = homeAdData;
 });
 
-//列表
+// 列表
 let homeListData = require('./home/list.js');
 router.get('/api/homelist/:city/:page', function (ctx, next) {
   const paramsCity = ctx.params.city;
@@ -76,7 +76,7 @@ router.get('/api/detail/comment/:page/:id', function (ctx, next) {
   ctx.body = detailComment
 });
 
-//开启服务
+// 开启服务
 const serve = require('koa-static');
 app.use(serve(__dirname + '/images'));
 app.use(router.routes())

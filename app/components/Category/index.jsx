@@ -22,6 +22,11 @@ class Category extends Component {
           index: index
         })
       }
+      // callback: function(index) {
+      //  this.setState({
+      //    index: index
+      //  }).bind(this)
+      // }
     };
 
     return (

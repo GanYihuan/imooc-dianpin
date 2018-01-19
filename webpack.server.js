@@ -96,6 +96,7 @@ module.exports = {
     })
   ],
 
+  // '/api' 为开头的http请求,代理到"http://localhost:3000"
   devServer: {
     proxy: {
       '/api': {
@@ -103,10 +104,13 @@ module.exports = {
         secure: false
       }
     },
-
+    // 本地服务器加载的页面所在页面
     contentBase: './public',
+    // 不跳转
     historyApiFallback: true,
+    // 实时刷新
     inline: true,
+    // 热加载
     hot: true
   }
 };

@@ -11,6 +11,7 @@ import './static/css/font.less';
 // 解决移动端300毫秒延迟
 let FastClick = require('fastclick');
 FastClick.attach(document.body);
+// 第二步: 根据规则生成 store
 const store = configureStore();
 
 
