@@ -31,6 +31,7 @@ class City extends Component {
       return
     }
 
+    // 修改 redux
     const userinfo = this.props.userinfo;
     userinfo.cityName = newCity;
     this.props.userinfoAction.update(userinfo);
@@ -38,7 +39,7 @@ class City extends Component {
     // 修改localStoreage
     LocalStore.setItem(CITYNAME, newCity);
 
-    // 路由跳转
+    // 路由跳转到首页
     this.props.history.push('/');
   }
 }
