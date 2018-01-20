@@ -1,14 +1,13 @@
-import React, {Component} from 'react'
-import PureRenderMixin from 'react-addons-pure-render-mixin'
-import {connect} from 'react-redux'
-import {bindActionCreators} from 'redux'
-import * as appActions from '../../actions/app'
+import React, {Component} from 'react';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as appActions from '../../actions/app';
+import Header from '../../components/Header';
+import Center from './subpage/center';
+import Animate from './subpage/animate';
+import styles from './style.less';
 
-import Header from '../../components/Header'
-import Center from './subpage/center'
-import Animate from './subpage/animate'
-
-import styles from './style.less'
 
 class CSS extends Component {
   constructor(props) {
@@ -29,7 +28,7 @@ class CSS extends Component {
                 ? <div>
                   <div id={styles["common-header"]}>
 							<span className={styles["back-icon"]} onClick={this.currentback.bind(this)}>
-								<i className="icon-chevron-left"></i>
+								<i className="icon-chevron-left"/>
 							</span>
                     <h1>{this.state.title}</h1>
                   </div>
