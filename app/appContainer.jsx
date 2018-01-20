@@ -20,6 +20,7 @@ import SearchContainer from 'bundle-loader?lazy!./containers/Search';
 import UserContainer from 'bundle-loader?lazy!./containers/user';
 import DetailContainer from 'bundle-loader?lazy!./containers/Detail';
 import NotFoundContainer from 'bundle-loader?lazy!./containers/NotFound';
+import LoginContainer from 'bundle-loader?lazy!./containers/Login';
 
 
 const City = (props) => (
@@ -43,6 +44,17 @@ const User = (props) => (
     </Bundle>
 );
 
+// 传递了params
+const Login = (props) => (
+    <Bundle load={LoginContainer}>
+      {(Login) => <Login
+          history={props.props.history}
+          match={props.props.match}
+      />}
+    </Bundle>
+);
+
+// 传递了params: match={props.props.match}
 const Detail = (props) => (
     <Bundle load={DetailContainer}>
       {(Detail) => <Detail
@@ -113,6 +125,12 @@ class AppContainer extends Component {
                         )}
                     />
                     <Route
+                        path="/login/:router?"
+                        render={props => (
+                            <Login props={props}/>
+                        )}
+                    />
+                    <Route
                         render={props => (
                             <NotFound props={props}/>
                         )}
@@ -148,7 +166,9 @@ class AppContainer extends Component {
 
 // 第三步：定义数据变化后派发规则
 function mapStateToProps(state) {
-  return {}
+  return {
+    userinfo: state.userinfo
+  }
 }
 
 // 第四步：触发规则变化
