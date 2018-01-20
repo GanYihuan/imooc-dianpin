@@ -32,7 +32,11 @@ class SearchList extends Component {
           }
           {
             this.state.hasMore
-                ? <LoadMore isLoadingMore={this.state.isLoadingMore} loadMoreFn={this.loadMoreData.bind(this)}/>
+                ?
+                <LoadMore
+                    isLoadingMore={this.state.isLoadingMore}
+                    loadMoreFn={this.loadMoreData.bind(this)}
+                />
                 : ''
           }
         </div>
@@ -72,45 +76,53 @@ class SearchList extends Component {
   resultHandle(result) {
     // 增加 page 计数
     const page = this.state.page;
+
     this.setState({
       page: page + 1
     });
-    result.then(res => {
-      if (res.ok) {
-        return res.json()
-      } else {
-        console.log("当前城市：" + this.props.cityName);
-        console.log("当前页码：" + this.state.page);
-        console.log("当前关键字：" + this.props.keyword);
-        return ListData;
-      }
-    }).then(json => {
-      const hasMore = json.hasMore;
-      const data = json.data;
-      this.setState({
-        hasMore: hasMore,
-        // 注意，这里讲最新获取的数据，拼接到原数据之后，使用 concat 函数
-        data: this.state.data.concat(data),
-        isLoadingMore: false
-      })
-    }).catch(err => {
-      console.log(err.message);
-    })
+
+    result
+        .then(res => {
+          if (res.ok) {
+            return res.json()
+          } else {
+            console.log("当前城市：" + this.props.cityName);
+            console.log("当前页码：" + this.state.page);
+            console.log("当前关键字：" + this.props.keyword);
+            return ListData;
+          }
+        })
+        .then(json => {
+          const hasMore = json.hasMore;
+          const data = json.data;
+          this.setState({
+            hasMore: hasMore,
+            // 注意，这里讲最新获取的数据，拼接到原数据之后，使用 concat 函数
+            data: this.state.data.concat(data),
+            isLoadingMore: false
+          })
+        })
+        .catch(err => {
+          console.log(err.message);
+        })
   }
 
-  // 页面再次渲染
+  // 页面初次渲染，会走componentDidMount
+  // 页面再次渲染，就不会走componentDidMount，而只走componentDidUpdate
   // 处理重新搜索
   componentDidUpdate(prevProps, prevState) {
     const keyword = this.props.keyword;
     const category = this.props.category;
+
     // 搜索条件完全相等时，忽略。重要！！！
     if (keyword === prevProps.keyword && category === prevProps.category) {
       return
     }
+
     // 重置 state
     this.setState(initialState);
     // 重新加载数据
-    this.loadFirstPageData()
+    this.loadFirstPageData();
   }
 }
 

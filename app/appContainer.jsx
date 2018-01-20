@@ -90,6 +90,10 @@ class AppContainer extends Component {
                             <City props={props}/>
                         )}
                     />
+                    {/*
+                    /search/:category(/:keyword)
+                     其中/search是路径，/:category是必填参数，(/:keyword)是选填参数。
+                     */}
                     <Route
                         path="/search/:category/:keyword?"
                         render={props => (

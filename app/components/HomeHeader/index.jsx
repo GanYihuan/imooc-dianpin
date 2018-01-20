@@ -40,6 +40,7 @@ class HomeHeader extends Component {
   enterHandle(value) {
     // js方式路由
     // 跳转的到指定的路由
+    // all 类型
     this.props.history.push('/search/all/' + encodeURIComponent(value));
   }
 }

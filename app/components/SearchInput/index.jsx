@@ -20,9 +20,11 @@ class SearchInput extends Component {
               type="text"
               placeholder="请输入关键字"
               // 非约束性,dom的操作，优化能力差
+              // defaultValue就是原生DOM中的value属性
               // <input ref="input" defaultValue="1"/>
               // var input = this.refs.input
               // console.log(input.value)
+              //
               // 约束性，监控input变化，将值保存入state中，从state里面获取值
               value={this.state.value}
               onChange={this.changeHandle.bind(this)}
@@ -48,6 +50,7 @@ class SearchInput extends Component {
     if (e.keyCode !== 13) {
       return;
     }
+
     this.props.enterHandle(this.state.value);
   }
 }
