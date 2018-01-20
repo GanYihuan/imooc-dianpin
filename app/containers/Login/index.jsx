@@ -85,6 +85,7 @@ function mapStateToProps(state) {
 // 第四步：触发规则变化
 function mapDispatchToProps(dispatch) {
   return {
+    // userInfoActions 使用 update()
     userInfoActions: bindActionCreators(userInfoActionsFromOtherFiles, dispatch)
   }
 }
