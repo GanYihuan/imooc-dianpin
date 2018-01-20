@@ -15,8 +15,10 @@ class Detail extends Component {
   }
 
   render() {
-    // 获取路由appContainer里的参数id,  path="/detail/:id"
+    // 获取路由 /Users/ganyihuan/Documents/Code/Web/RN/dianpin/app/appContainer.jsx
+    // 里的参数id,  path="/detail/:id"
     const id = this.props.match.params.id;
+
     return (
         <div>
           <Header title="商户详情"/>
@@ -32,6 +34,7 @@ class Detail extends Component {
     });
   }
 }
+
 
 function mapStateToProps(state) {
   return {}

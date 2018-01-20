@@ -30,7 +30,11 @@ class Comment extends React.Component {
           }
           {
             this.state.hasMore
-                ? <LoadMore isLoadingMore={this.state.isLoadingMore} loadMoreFn={this.loadMoreData.bind(this)}/>
+                ?
+                <LoadMore
+                    isLoadingMore={this.state.isLoadingMore}
+                    loadMoreFn={this.loadMoreData.bind(this)}
+                />
                 : ''
           }
         </div>
@@ -54,38 +58,39 @@ class Comment extends React.Component {
     this.setState({
       isLoadingMore: true
     });
-
     const id = this.props.id;
     const page = this.state.page;
     const result = getCommentData(page, id);
     this.resultHandle(result);
-    ;
   }
 
   // 处理数据
   resultHandle(result) {
-    result.then(res => {
-      if (res.ok) {
-        return res.json()
-      } else {
-        return CommentData
-      }
-    }).then(json => {
-      // 增加 page
-      const page = this.state.page;
-      const hasMore = json.hasMore;
-      const data = json.data;
+    result
+        .then(res => {
+          if (res.ok) {
+            return res.json()
+          } else {
+            return CommentData
+          }
+        })
+        .then(json => {
+          // 增加 page
+          const page = this.state.page;
+          const hasMore = json.hasMore;
+          const data = json.data;
 
-      this.setState({
-        page: page + 1,
-        hasMore: hasMore,
-        isLoadingMore: false,
-        // 注意，这里讲最新获取的数据，拼接到原数据之后，使用 concat 函数
-        data: this.state.data.concat(data)
-      })
-    }).catch(err => {
-      console.error('详情页获取用户评论数据出错, ', err.message)
-    })
+          this.setState({
+            page: page + 1,
+            hasMore: hasMore,
+            isLoadingMore: false,
+            // 注意，这里讲最新获取的数据，拼接到原数据之后，使用 concat 函数
+            data: this.state.data.concat(data)
+          })
+        })
+        .catch(err => {
+          console.error('详情页获取用户评论数据出错, ', err.message);
+        })
   }
 }
 

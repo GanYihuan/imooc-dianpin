@@ -12,6 +12,7 @@ class DetailInfo extends Component {
 
   render() {
     const data = this.props.data;
+
     return (
         <div className={styles["detail-info-container"]}>
           <div className={styles["info-container"] + " clear-fix"}>
@@ -28,13 +29,12 @@ class DetailInfo extends Component {
             </div>
           </div>
           {/* dangerouslySetInnerHTML: <br/>变成可用的html标签,不常用, 导致XSS攻击 */}
-          <p dangerouslySetInnerHTML={{__html: data.desc}} className={styles["info-desc"]}/>
+          <p
+              dangerouslySetInnerHTML={{__html: data.desc}}
+              className={styles["info-desc"]}
+          />
         </div>
     )
-  }
-
-  componentDidMount() {
-
   }
 }
 
