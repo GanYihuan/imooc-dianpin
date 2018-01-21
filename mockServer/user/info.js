@@ -2,7 +2,7 @@ var config = require("../config/config")
 module.exports = [
   {
     id: Date.now(),
-    img: 'http://ott9ejc4c.bkt.clouddn.com/138012-20161016201638030-473660627.png',
+    img: config.imgUrl+'/8.png',
     title: '汉堡大王',
     count: 3,
     price: '167',
@@ -10,7 +10,7 @@ module.exports = [
   },
   {
     id: Date.now(),
-    img: 'http://ott9ejc4c.bkt.clouddn.com/138012-20161016201645858-1342445625.png',
+    img: config.imgUrl+'/9.png',
     title: '麻辣香锅',
     count: 1,
     price: '188',
@@ -18,7 +18,7 @@ module.exports = [
   },
   {
     id: Date.now(),
-    img: 'http://ott9ejc4c.bkt.clouddn.com/138012-20161016201708124-1116595594.png',
+    img: config.imgUrl+'/10.png',
     title: '好吃自出餐',
     count: 2,
     price: '110',
