@@ -20,6 +20,12 @@ router.get('/api/homelist/:city/:page', function (ctx, next) {
   ctx.body = homeListData;
 });
 
+// orderList - UserInfo
+let orderList = require('./user/info.js');
+router.get('/api/orderlist/:username', function (ctx, next) {
+  ctx.body = orderList;
+});
+
 // 搜索结果页 - 搜索结果 - 三个参数
 let searchListData = require('./search/list.js');
 router.get('/api/search/:page/:city/:category/:keyword', function (ctx, next) {

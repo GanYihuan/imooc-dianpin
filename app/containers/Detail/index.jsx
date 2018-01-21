@@ -19,7 +19,6 @@ class Detail extends Component {
     // 获取路由 /Users/ganyihuan/Documents/Code/Web/RN/dianpin/app/appContainer.jsx
     // 里的参数id,  path="/detail/:id"
     const id = this.props.match.params.id;
-    // const history = hashHistory;
 
     return (
         <div>

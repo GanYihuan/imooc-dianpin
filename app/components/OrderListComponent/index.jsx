@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import Item from './Item/index';
 import styles from './style.less';
 
 
-class CommentList extends Component {
+class OrderListComponent extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
@@ -14,7 +14,7 @@ class CommentList extends Component {
     // 获取数据
     const data = this.props.data;
     return (
-        <div className={styles["comment-list"]}>
+        <div className={styles["order-list-container"]}>
           {
             data.map((item, index) => {
               return (
@@ -30,4 +30,5 @@ class CommentList extends Component {
   }
 }
 
-export default CommentList
+
+export default OrderListComponent

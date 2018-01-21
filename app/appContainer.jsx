@@ -17,7 +17,7 @@ import FooterContainer from './components/Footer';
 // 异步加载文件
 import CityContainer from 'bundle-loader?lazy!./containers/City';
 import SearchContainer from 'bundle-loader?lazy!./containers/Search';
-import UserContainer from 'bundle-loader?lazy!./containers/user';
+import UserContainer from 'bundle-loader?lazy!./containers/User';
 import DetailContainer from 'bundle-loader?lazy!./containers/Detail';
 import NotFoundContainer from 'bundle-loader?lazy!./containers/NotFound';
 import LoginContainer from 'bundle-loader?lazy!./containers/Login';
