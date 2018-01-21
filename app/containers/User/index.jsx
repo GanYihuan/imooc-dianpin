@@ -34,9 +34,6 @@ class User extends Component {
   }
 
   componentDidMount() {
-    // this.props.appActionList.menu({
-    //   location: -1
-    // })
     // 如果未登录, 返回登录页
     if (!this.props.userinfo.username) {
       this.props.history.push('/login');

@@ -1,24 +1,27 @@
 var config = require("../config/config")
-module.exports = {
-  data: [
-    {
-      count: '3',
-      img: config.imgUrl + '/8.png',
-      price: '28',
-      title: '汉堡大大'
-    },
-    {
-      count: '1',
-      img: config.imgUrl + '/9.png',
-      price: '98',
-      title: '北京开源饭店'
-    },
-    {
-      count: '2',
-      img: config.imgUrl + '/10.png',
-      price: '1980',
-      title: '服装定制'
-    }
-  ],
-  length: 3
-}
+module.exports = [
+  {
+    id: Date.now(),
+    img: 'http://ott9ejc4c.bkt.clouddn.com/138012-20161016201638030-473660627.png',
+    title: '汉堡大王',
+    count: 3,
+    price: '167',
+    commentState: 0
+  },
+  {
+    id: Date.now(),
+    img: 'http://ott9ejc4c.bkt.clouddn.com/138012-20161016201645858-1342445625.png',
+    title: '麻辣香锅',
+    count: 1,
+    price: '188',
+    commentState: 0
+  },
+  {
+    id: Date.now(),
+    img: 'http://ott9ejc4c.bkt.clouddn.com/138012-20161016201708124-1116595594.png',
+    title: '好吃自出餐',
+    count: 2,
+    price: '110',
+    commentState: 2
+  }
+]

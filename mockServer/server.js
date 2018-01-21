@@ -20,7 +20,7 @@ router.get('/api/homelist/:city/:page', function (ctx, next) {
   ctx.body = homeListData;
 });
 
-// orderList - UserInfo
+// User界面中 订单列表
 let orderList = require('./user/info.js');
 router.get('/api/orderlist/:username', function (ctx, next) {
   ctx.body = orderList;
