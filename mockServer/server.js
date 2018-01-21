@@ -26,6 +26,9 @@ router.get('/api/orderlist/:username', function (ctx, next) {
   ctx.body = orderList;
 });
 
+router.post('/api/submitComment');
+
+
 // 搜索结果页 - 搜索结果 - 三个参数
 let searchListData = require('./search/list.js');
 router.get('/api/search/:page/:city/:category/:keyword', function (ctx, next) {

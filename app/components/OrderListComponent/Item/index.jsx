@@ -17,6 +17,7 @@ class Item extends Component {
 
   render() {
     const data = this.props.data;
+
     return (
         <div className={styles["order-item-container"] + " clear-fix"}>
           <div className={styles["order-item-img"] + " float-left"}>
@@ -43,14 +44,27 @@ class Item extends Component {
             <p>数量：{data.count}</p>
             <p>价格：${data.price}</p>
           </div>
-          <div>
+          <div className={styles["comment-text-container"]}>
             {
               this.state.commentState === 1
                   ?
                   <div>
-                    <textarea></textarea>
-                    <button>提交</button>
-                    <button onClick={this.hideComment.bind(this)}>取消</button>
+                    <textarea
+                        ref="commentText"
+                        className={styles["textarea"]}
+                    />
+                    <button
+                        onClick={this.submitClickHandle.bind(this)}
+                        className={styles["btn"]}
+                    >
+                      提交
+                    </button>
+                    <button
+                        onClick={this.hideComment.bind(this)}
+                        className={styles["unselected-btn"]}
+                    >
+                      取消
+                    </button>
                   </div>
                   :
                   ''
@@ -76,6 +90,27 @@ class Item extends Component {
     this.setState({
       commentState: 0
     })
+  }
+
+  commentOK() {
+    // 已经评价，修改状态
+    this.setState({
+      commentState: 2
+    })
+  }
+
+  submitClickHandle() {
+    const submitComment = this.props.submitComment;
+    const id = this.props.data.id;
+    const commentTextDOM = this.refs.commentText;
+    const value = commentTextDOM.value.trim();
+
+    if (!value) {
+      return
+    }
+
+    // 提交评论内容
+    submitComment(id, value, this.commentOK.bind(this));
   }
 }
 
