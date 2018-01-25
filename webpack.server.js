@@ -96,7 +96,7 @@ module.exports = {
     })
   ],
 
-  // '/api' 为开头的http请求,代理到"http://localhost:3000"
+  // proxy: '/api' 为开头的http请求,代理到"http://localhost:3000"
   devServer: {
     proxy: {
       '/api': {
