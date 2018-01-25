@@ -19,7 +19,8 @@ react + react-router4.1 + redux + koa2 + koa-router + less + ES6/7 + webpack + f
 ```
  npm run dev (正常编译模式)
 
- 访问 http://localhost:8080
+ 访问 
+http://localhost:8080
 
  npm run build （发布生产版本，对代码进行混淆压缩，提取公共代码，分离css文件）
 ```

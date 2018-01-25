@@ -1,7 +1,7 @@
 import * as userTypes from '../constants/userinfo';
 
 
-// Redux
+// redux
 // 第一步：计算规则
 export default function userinfo(state = {}, action) {
   switch (action.type) {

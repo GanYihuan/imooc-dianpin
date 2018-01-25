@@ -36,7 +36,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    //    /Users/ganyihuan/Documents/Code/Web/RN/dianpin/app/actions/app.js
+    // dianpin/app/actions/app.js
     this.props.appActionList.menu({
       location: 1
     });
@@ -45,7 +45,8 @@ class Home extends Component {
 
 // 第三步：定义数据变化后派发规则
 // reducers/index.js: 里的返回值能成为state
-// userinfo: 变成props里的一个能用的参数userinfo
+// userinfo: 变成props里的一个能用的参数 userinfo
+// 数据变化了，this.props.userinfo会立马更新
 function mapStateToProps(state) {
   return {
     userinfo: state.userinfo
@@ -53,7 +54,8 @@ function mapStateToProps(state) {
 }
 
 // 第四步：触发规则变化
-// appActions: 第一步的 action
+// appActionList: 变成props里的一个能用的参数 appActionList
+// appActions: dianpin/app/actions/app.js
 function mapDispatchToProps(dispatch) {
   return {
     appActionList: bindActionCreators(appActions, dispatch)
@@ -64,4 +66,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Home)
+)(Home);
