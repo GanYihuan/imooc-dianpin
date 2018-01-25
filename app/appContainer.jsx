@@ -2,19 +2,19 @@ import React, {Component} from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {HashRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory';
-// redux流
+// redux flow
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as userInfoActionsFromOtherFiles from './actions/userinfo';
-// 本地缓存配置,localstorage
+// localstorage
 import {CITYNAME} from './config/localStorekey';
 import LocalStore from './util/localStore';
-// bundle模型用来异步加载组件
+// bundle load asynchronously
 import Bundle from './bundle';
-// 不需要异步加载的组件
+// not load asynchronously
 import HomeContainer from './containers/Home';
 import FooterContainer from './components/Footer';
-// 异步加载文件
+// load asynchronously
 import CityContainer from 'bundle-loader?lazy!./containers/City';
 import SearchContainer from 'bundle-loader?lazy!./containers/Search';
 import UserContainer from 'bundle-loader?lazy!./containers/User';
@@ -74,7 +74,7 @@ const NotFound = (props) => (
 class AppContainer extends Component {
   constructor(props, context) {
     super(props, context);
-    // 避免无效渲染
+    // Avoid invalid rendering
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = {
       initDone: false
@@ -157,7 +157,6 @@ class AppContainer extends Component {
     this.props.userInfoActions.update({
       cityName: cityName
     });
-
     this.setState({
       initDone: true
     });
@@ -181,4 +180,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(AppContainer)
+)(AppContainer);

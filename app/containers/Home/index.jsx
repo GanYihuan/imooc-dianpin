@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-// 性能检测
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as appActions from '../../actions/app';
+// components
 import HomeHeader from '../../components/HomeHeader';
 import Category from '../../components/Category';
 import Ad from './subpage/Ad';

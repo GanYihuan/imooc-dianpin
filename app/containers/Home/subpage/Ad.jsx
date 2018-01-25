@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-import HomeAd from '../../../components/HomeAd';
 import AdData from '../../../../mockServer/home/ad';
 import {getAdData} from '../../../fetch/home/home';
+import HomeAd from '../../../components/HomeAd';
 
 
 class Ad extends Component {

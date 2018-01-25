@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-import ReactSwipe from 'react-swipe';
 import {Link} from 'react-router-dom';
+import ReactSwipe from 'react-swipe';
 import styles from './style.less';
 
 
@@ -22,11 +22,6 @@ class Category extends Component {
           index: index
         })
       }
-      // callback: function(index) {
-      //  this.setState({
-      //    index: index
-      //  }).bind(this)
-      // }
     };
 
     return (
@@ -159,9 +154,6 @@ class Category extends Component {
   }
 
   SwipeCategory(e) {
-    // this.setState({
-    // 	index:parseInt(e.target.getAttribute("data-index"))
-    // })
     e.preventDefault();
     e.stopPropagation();
   }

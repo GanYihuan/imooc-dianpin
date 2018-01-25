@@ -1,8 +1,8 @@
 import React from 'react';
 import {render} from 'react-dom';
 import {Provider} from 'react-redux';
-// 如果不是做native相关的就用 react-router-dom，
-// 如果你是做react-native相关的应用就毫不犹豫的选择用 react-router-native来构建你的应用路由咯。
+// 不做native就用 react-router-dom，
+// 做react-native就用 react-router-native
 import {BrowserRouter, HashRouter} from 'react-router-dom';
 import configureStore from './store/configureStore';
 import AppContainer from './appContainer';
