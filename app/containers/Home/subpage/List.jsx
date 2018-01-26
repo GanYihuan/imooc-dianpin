@@ -51,25 +51,21 @@ class List extends Component {
     this.resultHandle(result);
   }
 
-  // 获取数据
+  // get data
   loadMoreData() {
-    // 记录状态
     this.setState({
       isLoadingMore: true
     });
-
     const cityName = this.props.cityName;
     const page = this.state.page;
     const result = getListData(cityName, page);
     this.resultHandle(result);
-
-    // 增加page
     this.setState({
       page: page + 1
     });
   }
 
-  // 处理数据
+  // handle data
   resultHandle(result) {
     result
         .then(res => {
@@ -78,14 +74,12 @@ class List extends Component {
           } else {
             console.log("当前城市：" + this.props.cityName);
             console.log("当前页码：" + this.state.page);
-
             return ListData;
           }
         })
         .then(json => {
           const data = json.data;
           const hasMore = json.hasMore;
-
           this.setState({
             hasMore: hasMore,
             // 数据拼接上去
