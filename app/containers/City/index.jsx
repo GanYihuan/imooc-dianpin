@@ -30,15 +30,12 @@ class City extends Component {
     if (newCity == null) {
       return
     }
-
     // 修改 redux
     const userinfo = this.props.userinfo;
     userinfo.cityName = newCity;
     this.props.userinfoAction.update(userinfo);
-
     // 修改localStoreage
     LocalStore.setItem(CITYNAME, newCity);
-
     // 路由跳转到首页
     this.props.history.push('/');
   }
