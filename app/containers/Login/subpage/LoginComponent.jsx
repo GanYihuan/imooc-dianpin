@@ -39,6 +39,7 @@ class LoginComponent extends Component {
   }
 
   changeHandle(e) {
+    // <input/> change value
     this.setState({
       phone: e.target.value
     })

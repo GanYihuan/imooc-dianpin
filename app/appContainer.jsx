@@ -57,10 +57,12 @@ const Login = (props) => (
 // 传递了params: match={props.props.match}
 const Detail = (props) => (
     <Bundle load={DetailContainer}>
-      {(Detail) => <Detail
-          history={props.props.history}
-          match={props.props.match}
-      />}
+      {
+        (Detail) => <Detail
+            history={props.props.history}
+            match={props.props.match}
+        />
+      }
     </Bundle>
 );
 
@@ -147,11 +149,9 @@ class AppContainer extends Component {
 
   componentDidMount() {
     let cityName = LocalStore.getItem(CITYNAME);
-
     if (cityName == null) {
       cityName = '上海'
     }
-
     // 城市信息保存到redux中，redux能实现数据共享
     // update:   /Users/ganyihuan/Documents/Code/Web/RN/dianpin/app/actions/userinfo.js
     this.props.userInfoActions.update({

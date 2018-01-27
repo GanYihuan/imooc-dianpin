@@ -34,35 +34,28 @@ class Login extends Component {
     this.docheck();
   }
 
-  // 处理登录成功后
+  // handle login success
   loginHandle(username) {
-    // const 定义后不会改变
+    // redux
     const actions = this.props.userInfoActions;
     let userinfo = this.props.userinfo;
     userinfo.username = username;
     actions.update(userinfo);
-
-    // 跳转链接
     // appContainer: line57
     const router = this.props.match.params.router;
     if (router) {
-      // 跳转到指定页面
       this.props.history.push(router);
     } else {
-      // 跳转到默认页面
       this.goUserPage();
     }
   }
 
-  // 登录情况
+  // check login or not
   docheck() {
     const userinfo = this.props.userinfo;
-
     if (userinfo.username) {
-      // 已登录
       this.goUserPage();
     } else {
-      // 未登录
       this.setState({
         checking: false
       });
@@ -74,7 +67,7 @@ class Login extends Component {
   }
 }
 
-
+// Redux
 // 第三步：定义数据变化后派发规则
 function mapStateToProps(state) {
   return {
