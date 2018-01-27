@@ -32,12 +32,10 @@ class Buy extends Component {
     this.checkStoreState();
   }
 
-  // 检查商户是否被收藏
   checkStoreState() {
     const id = this.props.id;
     const store = this.props.store;
-
-    // some 只要有一个满足就可以
+    // some: 只要有一个满足就可以
     store.some((item) => {
       if (item.id === id) {
         this.setState({
@@ -48,32 +46,23 @@ class Buy extends Component {
     });
   }
 
-  // 购买事件
   buyHandle() {
-    // 验证登录
     const loginFlag = this.loginCheck();
     if (!loginFlag) {
       return
     }
-
-    // 购买流程
-    // ......
-
-    // 跳转
+    // 购买流程(略)
+    // ...
     this.props.history.push('/user');
   }
 
-  // 收藏事件
   storeHandle() {
-    // 验证登录
     const loginFlag = this.loginCheck();
     if (!loginFlag) {
       return
     }
-
     const id = this.props.id;
     const storeActions = this.props.storeActions;
-
     if (this.state.isStore) {
       // 当前用户已经被收藏，点击取消收藏
       storeActions.rm({id: id})
@@ -81,17 +70,14 @@ class Buy extends Component {
       // 当前用户没有被收藏，点击收藏
       storeActions.add({id: id})
     }
-
     this.setState({
       isStore: !this.state.isStore
     })
   }
 
-  // 验证登录
   loginCheck() {
     const id = this.props.id;
     const userinfo = this.props.userinfo;
-
     if (!userinfo.username) {
       this.props.history.push('/login/' + encodeURIComponent('/detail/' + id));
       return false
@@ -100,7 +86,7 @@ class Buy extends Component {
   }
 }
 
-
+// Redux
 function mapStateToProps(state) {
   return {
     userinfo: state.userinfo,

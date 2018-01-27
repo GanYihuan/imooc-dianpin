@@ -43,7 +43,7 @@ class BuyAndStore extends Component {
   }
 }
 
-
+// Redux
 function mapStateToProps(state) {
   return {
     userinfo: state.userinfo
