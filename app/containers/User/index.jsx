@@ -16,7 +16,6 @@ class User extends Component {
 
   render() {
     const userinfo = this.props.userinfo;
-
     return (
         <div>
           <Header
@@ -41,7 +40,7 @@ class User extends Component {
   }
 }
 
-
+// Redux
 function mapStateToProps(state) {
   return {
     userinfo: state.userinfo

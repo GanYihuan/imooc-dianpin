@@ -11,10 +11,8 @@ class OrderListComponent extends React.Component {
   }
 
   render() {
-    // 获取数据
     const data = this.props.data;
     const submitComment = this.props.submitComment;
-
     return (
         <div className={styles["order-list-container"]}>
           {

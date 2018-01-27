@@ -41,7 +41,6 @@ class OrderList extends Component {
   // 获取列表数据
   loadOrderList(username) {
     const result = getOrderListData(username);
-
     result
         .then(res => {
           return res.json()
@@ -59,10 +58,8 @@ class OrderList extends Component {
         })
   }
 
-  // 提交评论
   submitComment(id, value, callback) {
     const result = postComment(id, value);
-
     result
         .then(res => {
           return res.json()
@@ -70,6 +67,7 @@ class OrderList extends Component {
         .then(json => {
           if (json.errno === 0) {
             // 已经评价，修改状态
+            // app/components/OrderListComponent/Item/index.jsx
             // callback -> commentOK()
             callback()
           }

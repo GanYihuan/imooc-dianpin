@@ -17,7 +17,6 @@ class Item extends Component {
 
   render() {
     const data = this.props.data;
-
     return (
         <div className={styles["order-item-container"] + " clear-fix"}>
           <div className={styles["order-item-img"] + " float-left"}>
@@ -80,20 +79,19 @@ class Item extends Component {
     })
   }
 
-  showComment() {
-    this.setState({
-      commentState: 1
-    })
-  }
-
   hideComment() {
     this.setState({
       commentState: 0
     })
   }
 
+  showComment() {
+    this.setState({
+      commentState: 1
+    })
+  }
+
   commentOK() {
-    // 已经评价，修改状态
     this.setState({
       commentState: 2
     })
@@ -104,15 +102,12 @@ class Item extends Component {
     const id = this.props.data.id;
     const commentTextDOM = this.refs.commentText;
     const value = commentTextDOM.value.trim();
-
     if (!value) {
       return
     }
-
-    // 提交评论内容
+    // callback func, let orther js call commentOK func
     submitComment(id, value, this.commentOK.bind(this));
   }
 }
-
 
 export default Item
