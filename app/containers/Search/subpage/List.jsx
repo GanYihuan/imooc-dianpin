@@ -76,11 +76,9 @@ class SearchList extends Component {
   resultHandle(result) {
     // 增加 page 计数
     const page = this.state.page;
-
     this.setState({
       page: page + 1
     });
-
     result
         .then(res => {
           if (res.ok) {
@@ -113,12 +111,10 @@ class SearchList extends Component {
   componentDidUpdate(prevProps, prevState) {
     const keyword = this.props.keyword;
     const category = this.props.category;
-
     // 搜索条件完全相等时，忽略。重要！！！
     if (keyword === prevProps.keyword && category === prevProps.category) {
       return
     }
-
     // 重置 state
     this.setState(initialState);
     // 重新加载数据

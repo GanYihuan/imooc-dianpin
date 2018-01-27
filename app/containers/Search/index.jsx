@@ -14,11 +14,18 @@ class Search extends Component {
   }
 
   render() {
+    // appContainer inside => match
     const params = this.props.match.params;
     return (
         <div>
-          <SearchHeader keyword={params.keyword} history={this.props.history}/>
-          <SearchList keyword={params.keyword} category={params.category}/>
+          <SearchHeader
+              keyword={params.keyword}
+              history={this.props.history}
+          />
+          <SearchList
+              keyword={params.keyword}
+              category={params.category}
+          />
         </div>
     )
   }

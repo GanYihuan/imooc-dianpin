@@ -42,15 +42,16 @@ class SearchInput extends Component {
 
   changeHandle(e) {
     this.setState({
+      // <input/> value
       value: e.target.value
     })
   }
 
   keyUpHandle(e) {
+    // 13 = keyCode, enter keyboad
     if (e.keyCode !== 13) {
       return;
     }
-
     this.props.enterHandle(this.state.value);
   }
 }

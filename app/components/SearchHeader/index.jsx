@@ -31,7 +31,7 @@ class SearchHeader extends Component {
   }
 
   clickHandle() {
-    window.history.back()
+    window.history.back();
   }
 
   enterHandle(value) {
