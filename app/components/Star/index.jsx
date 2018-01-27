@@ -15,17 +15,15 @@ class Star extends React.Component {
     if (star > 5) {
       star = star % 5
     }
-
     return (
         <div className={styles["star-container"]}>
           {
             [1, 2, 3, 4, 5].map((item, index) => {
               const lightClass = star >= item ? styles["light"] : '';
-
               return (
                   <i
                       key={index}
-                      className={'icon-star' + lightClass}
+                      className={'icon-star ' + lightClass}
                   />
               )
             })

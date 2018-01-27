@@ -29,7 +29,6 @@ class Info extends Component {
   componentDidMount() {
     const id = this.props.id;
     const result = getDetail(id);
-
     result
         .then(res => {
           if (res.ok) {

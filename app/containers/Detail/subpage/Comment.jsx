@@ -79,7 +79,6 @@ class Comment extends React.Component {
           const page = this.state.page;
           const hasMore = json.hasMore;
           const data = json.data;
-
           this.setState({
             page: page + 1,
             hasMore: hasMore,
