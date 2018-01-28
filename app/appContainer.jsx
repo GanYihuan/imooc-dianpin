@@ -159,11 +159,13 @@ class AppContainer extends Component {
 
   componentDidMount() {
     let cityName = LocalStore.getItem(CITYNAME);
+    // 不希望cityName为undefind或null
+    // 这是唯一用 == 号地方，其它时候用 ===
     if (cityName == null) {
       cityName = '上海'
     }
     // 城市信息保存到redux中，redux能实现数据共享
-    // update:   /Users/ganyihuan/Documents/Code/Web/RN/dianpin/app/actions/userinfo.js
+    // update: app/actions/userinfo.js
     this.props.userInfoActions.update({
       cityName: cityName
     });
@@ -173,6 +175,7 @@ class AppContainer extends Component {
   }
 }
 
+// Redux
 // 第三步：定义数据变化后派发规则
 function mapStateToProps(state) {
   return {
