@@ -1,11 +1,13 @@
 import React from 'react';
 import {render} from 'react-dom';
+// redux
 import {Provider} from 'react-redux';
-// 不做native就用 react-router-dom，
-// 做react-native就用 react-router-native
-import {BrowserRouter, HashRouter} from 'react-router-dom';
 import configureStore from './store/configureStore';
+// react-router
+// 做react-native就用 react-router-native, 否则用react-router-dom
+import {BrowserRouter, HashRouter} from 'react-router-dom';
 import AppContainer from './appContainer';
+// style
 import './static/css/common.less';
 import './static/css/font.less';
 
