@@ -17,11 +17,18 @@ class Category extends Component {
   render() {
     const opt = {
       auto: 2500,
+      // ES6:
       callback: (index) => {
         this.setState({
           index: index
         })
       }
+      // ES5:
+      // callback: function() {
+      //   this.setState({
+      //     index: index
+      //   })
+      // }.bind(this)
     };
 
     return (

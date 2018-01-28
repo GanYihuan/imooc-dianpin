@@ -23,6 +23,8 @@ class Home extends Component {
   render() {
     return (
         <div>
+          {/* cityName={this.props.userinfo.cityName} */}
+          {/* appContainer: line169 */}
           <HomeHeader
               cityName={this.props.userinfo.cityName}
               history={this.props.history}

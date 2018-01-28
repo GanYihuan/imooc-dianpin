@@ -13,6 +13,8 @@
 
 
 ## 07: 开发首页
+> 09-轮播图
+1. 'react-swipe';
 
 
 
@@ -21,13 +23,10 @@
 
 
 ## 12: Buy Page
-### Redux
-1. constants/store.js 
-> 创建constants
-2. actions/store.js
-> 创建Actions
-3. 
-> 创建Reducer
+> Redux
+1. constants/store.js  创建constants
+2. actions/store.js 创建Actions
+3. 创建Reducer
 
 
 
