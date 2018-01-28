@@ -25,36 +25,44 @@ import LoginContainer from 'bundle-loader?lazy!./containers/Login';
 
 const City = (props) => (
     <Bundle load={CityContainer}>
-      {(City) => <City history={props.props.history}/>}
+      {
+        (City) => <City history={props.props.history}/>
+      }
     </Bundle>
 );
 
 const Search = (props) => (
     <Bundle load={SearchContainer}>
-      {(Search) => <Search
-          history={props.props.history}
-          match={props.props.match}
-      />}
+      {
+        (Search) => <Search
+            history={props.props.history}
+            match={props.props.match}
+        />
+      }
     </Bundle>
 );
 
 const User = (props) => (
     <Bundle load={UserContainer}>
-      {(User) => <User history={props.props.history}/>}
+      {
+        (User) => <User history={props.props.history}/>
+      }
     </Bundle>
 );
 
-// 传递了params
+// match={props.props.match}: 传递了params, redux所有参数
+// /detail/:id ->  /:id 参数
 const Login = (props) => (
     <Bundle load={LoginContainer}>
-      {(Login) => <Login
-          history={props.props.history}
-          match={props.props.match}
-      />}
+      {
+        (Login) => <Login
+            history={props.props.history}
+            match={props.props.match}
+        />
+      }
     </Bundle>
 );
 
-// 传递了params: match={props.props.match}
 const Detail = (props) => (
     <Bundle load={DetailContainer}>
       {
@@ -68,7 +76,9 @@ const Detail = (props) => (
 
 const NotFound = (props) => (
     <Bundle load={NotFoundContainer}>
-      {(NotFound) => <NotFound history={props.props.history}/>}
+      {
+        (NotFound) => <NotFound history={props.props.history}/>
+      }
     </Bundle>
 );
 

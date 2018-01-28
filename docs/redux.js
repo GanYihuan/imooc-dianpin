@@ -53,6 +53,7 @@ store.dispatch({ type: 'DECREMENT' });
 
 // 第一步：计算规则
 //  dianpin/app/reducers/userinfo.js
+//  dianpin/app/reducers/store.js
 //  dianpin/app/reducers/index.js
 
 // 第二步: 根据规则生成 store
