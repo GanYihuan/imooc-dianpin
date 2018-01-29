@@ -26,7 +26,9 @@ import LoginContainer from 'bundle-loader?lazy!./containers/Login';
 const City = (props) => (
     <Bundle load={CityContainer}>
       {
-        (City) => <City history={props.props.history}/>
+        (City) => (
+            <City history={props.props.history}/>
+        )
       }
     </Bundle>
 );
@@ -34,10 +36,12 @@ const City = (props) => (
 const Search = (props) => (
     <Bundle load={SearchContainer}>
       {
-        (Search) => <Search
-            history={props.props.history}
-            match={props.props.match}
-        />
+        (Search) => (
+            <Search
+                history={props.props.history}
+                match={props.props.match}
+            />
+        )
       }
     </Bundle>
 );
@@ -45,7 +49,9 @@ const Search = (props) => (
 const User = (props) => (
     <Bundle load={UserContainer}>
       {
-        (User) => <User history={props.props.history}/>
+        (User) => (
+            <User history={props.props.history}/>
+        )
       }
     </Bundle>
 );
@@ -55,10 +61,12 @@ const User = (props) => (
 const Login = (props) => (
     <Bundle load={LoginContainer}>
       {
-        (Login) => <Login
-            history={props.props.history}
-            match={props.props.match}
-        />
+        (Login) => (
+            <Login
+                history={props.props.history}
+                match={props.props.match}
+            />
+        )
       }
     </Bundle>
 );
@@ -77,7 +85,9 @@ const Detail = (props) => (
 const NotFound = (props) => (
     <Bundle load={NotFoundContainer}>
       {
-        (NotFound) => <NotFound history={props.props.history}/>
+        (NotFound) => (
+            <NotFound history={props.props.history}/>
+        )
       }
     </Bundle>
 );
@@ -110,7 +120,7 @@ class AppContainer extends Component {
                     <Route
                         exact
                         path="/city"
-                        render={props => (
+                        render={(props) => (
                             <City props={props}/>
                         )}
                     />
@@ -120,30 +130,30 @@ class AppContainer extends Component {
                      */}
                     <Route
                         path="/search/:category/:keyword?"
-                        render={props => (
+                        render={(props) => (
                             <Search props={props}/>
                         )}
                     />
                     <Route
                         path="/detail/:id"
-                        render={props => (
+                        render={(props) => (
                             <Detail props={props}/>
                         )}
                     />
                     <Route
                         path="/user"
-                        render={props => (
+                        render={(props) => (
                             <User props={props}/>
                         )}
                     />
                     <Route
                         path="/login/:router?"
-                        render={props => (
+                        render={(props) => (
                             <Login props={props}/>
                         )}
                     />
                     <Route
-                        render={props => (
+                        render={(props) => (
                             <NotFound props={props}/>
                         )}
                     />
