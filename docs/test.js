@@ -1,66 +1,45 @@
 import React, {Component} from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-import {HashRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
-import createBrowserHistory from 'history/createBrowserHistory';
-// redux
-import {bindActionCreators} from 'redux';
-import {connet} from 'react-redux';
-import * as unserInfoActionFromOtherFiles from '';
-// localStorage
-import {CITYNAME} from "../app/config/localStorekey";
-import LocalStorage from '';
-// bundle
-import Bundle from '';
-//
-import HomeContainer from '';
-//
-import CityContainer from 'bundle-loader?lazy!./containers/City';
+import {Link} from 'react-router-dom';
+import SearchInput from '../SearchInput';
+import styles from './style.less';
 
 
-class AppContainer extends Component {
+class HomeHeader extends Component {
   constructor(props) {
     super(props);
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate;
+    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = {
-      initDone: false
+      keyword: ''
     }
   }
 
   render() {
-    const history = createBrowserHistory();
     return (
-        <Router>
-          {
-            this.state.initDone
-                ?
-                <div id={"app"}>
-                  <Switch>
-                    <Route exact path={"/"} component={HomeContainer}/>
-                    <Route exact path={"/city"} render={(props) => (
-                        <City props={props}/>
-                    )}/>
-                    <Route path={"/search/:category/:keyword?"} render={(props) => (
-                        <Search props={props}/>
-                    )}/>
-                    <Route path={"/detail/:id"} render={(props) => (
-                        <Detail props={props}/>
-                    )}/>
-                    <Route path={"/user"} render={(props) => (
-                        <User props={props}/>
-                    )}/>
-                    <Route path={"/login/:router?"} render={(props) => (
-                        <Login props={props}/>
-                    )}/>
-                    <Route render={(props) => (
-                        <NotFound props={props}/>
-                    )}/>
-                  </Switch>
-                  <FooterContainer history={history}/>
-                </div>
-                :
-                <div>loading...</div>
-          }
-        </Router>
-    );
+        <div id={styles['home-header']} className={"clear-fix"}>
+          <div className={styles['home-header-left'] + ' float-left'}>
+            <Link to={'/city'}>
+              <span>{this.props.cityName}</span>
+              &nbsp;
+              <i className={'icon-angle-down'}/>
+            </Link>
+          </div>
+          <div className={styles['home-header-right'] + 'float-right'}>
+            <Link to={'/login'}>
+              <i className={'icon-user'}/>
+            </Link>
+          </div>
+          <SearchInput value={''} enterHandle={this.enterHandle.bind(this)}/>
+        </div>
+    )
+  }
+
+  enterHandle(value) {
+    // js方式路由
+    // 跳转的到指定的路由
+    // all 类型
+    this.props.history.push('/search/all/' + encodeURIComponent(value));
   }
 }
+
+export default HomeHeader;
