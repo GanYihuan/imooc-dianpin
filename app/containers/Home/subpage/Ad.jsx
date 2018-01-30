@@ -30,14 +30,14 @@ class Ad extends Component {
     // koa接口
     const result = getAdData();
     result
-        .then(res => {
+        .then((res) => {
           if (res.ok) {
             return res.json();
           } else {
             return AdData;
           }
         })
-        .then(json => {
+        .then((json) => {
           const data = json;
           if (data.length) {
             this.setState({
@@ -45,7 +45,7 @@ class Ad extends Component {
             })
           }
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err.message);
         })
   }
