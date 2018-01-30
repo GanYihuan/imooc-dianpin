@@ -8,7 +8,7 @@ import styles from '';
 class Category extends Component {
   constructor(props) {
     super(props);
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+    this.shouldComponentUpdat = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = {
       index: 0
     }
@@ -22,18 +22,15 @@ class Category extends Component {
           index: index
         })
       }
-    }
+    };
 
     return (
         <div id={styles['home-category']}>
           <ReactSwipe swipeOptions={opt}>
             <div className={styles['carousel-item']}>
               <ul className={styles['clear-fix']}>
-                <Link to={'/search/jingdian'}>
-                  <li className={styles['jingdian'] + ' float-left'}></li>
-                </Link>
-                <Link to={'/search/ktv'}>
-                  <li></li>
+                <Link to={}>
+
                 </Link>
               </ul>
             </div>
