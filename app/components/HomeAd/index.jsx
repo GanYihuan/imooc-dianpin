@@ -11,17 +11,17 @@ class HomeAd extends Component {
 
   render() {
     return (
-        <div id={styles["home-ad"]}>
+        <div id={styles['home-ad']}>
           <h2>超值特惠</h2>
-          <div className={styles["ad-container"] + " clear-fix"}>
+          <div className={styles['ad-container'] + ' clear-fix'}>
             {
               this.props.data.map((item, index) => {
                 return (
                     <div
                         key={index}
-                        className={styles["ad-item"] + " float-left"}
+                        className={styles['ad-item'] + ' float-left'}
                     >
-                      <a href={item.link} target="_blank">
+                      <a href={item.link} target={'_blank'}>
                         <img src={item.img} alt={item.title}/>
                       </a>
                     </div>
