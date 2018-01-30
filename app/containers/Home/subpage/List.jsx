@@ -68,7 +68,7 @@ class List extends Component {
   // handle data
   resultHandle(result) {
     result
-        .then(res => {
+        .then((res) => {
           if (res.ok) {
             return res.json();
           } else {
@@ -77,7 +77,7 @@ class List extends Component {
             return ListData;
           }
         })
-        .then(json => {
+        .then((json) => {
           const data = json.data;
           const hasMore = json.hasMore;
           this.setState({
@@ -87,7 +87,7 @@ class List extends Component {
             isLoadingMore: false
           })
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err.message);
         })
   }

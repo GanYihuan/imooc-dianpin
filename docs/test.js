@@ -13,13 +13,13 @@ class HomeAd extends Component {
     return (
         <div id={styles['home-ad']}>
           <h2></h2>
-          <div className={styles = 'add-container'}>
+          <div className={styels['ad-container'] + ' clear-fix'}>
             {
               this.props.data.map((item, index) => {
                 return (
                     <div
-                        key={index}
-                        className={styles['ad-item'] + ' float-left'}
+                      key={index}
+                      className={styles['ad-item'] + ' float-left'}
                     >
                       <a href={item.link} target={'_blank'}>
                         <img src={item.img} alt={item.title}/>
