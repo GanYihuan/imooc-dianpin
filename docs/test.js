@@ -2,39 +2,65 @@ import React, {Component} from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {HashRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory';
-// redux flow
+// redux
 import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import * as userInfoActionsFromOtherFiles from './actions/userinfo';
-// localstorage
-import {CITYNAME} from './config/localStorekey';
-import LocalStore from './util/localStore';
-// bundle load asynchronously
-import Bundle from './bundle';
-// not load asynchronously
-import HomeContainer from './containers/Home';
-import FooterContainer from './components/Footer';
-// load asynchronously
+import {connet} from 'react-redux';
+import * as unserInfoActionFromOtherFiles from '';
+// localStorage
+import {CITYNAME} from "../app/config/localStorekey";
+import LocalStorage from '';
+// bundle
+import Bundle from '';
+//
+import HomeContainer from '';
+//
 import CityContainer from 'bundle-loader?lazy!./containers/City';
-import CityContainer from 'bundle-loader?lazy!./containers/City';
-import SearchContainer from 'bundle-loader?lazy!./containers/Search';
-import UserContainer from 'bundle-loader?lazy!./containers/User';
-import DetailContainer from 'bundle-loader?lazy!./containers/Detail';
-import NotFoundContainer from 'bundle-loader?lazy!./containers/NotFound';
-import LoginContainer from 'bundle-loader?lazy!./containers/Login';
-
-
-const City = (props) => {
-  <Bundle load={CityContainer}>
-    {
-      (City) => <City
-
-      />
-    }
-  </Bundle>
-}
 
 
 class AppContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate;
+    this.state = {
+      initDone: false
+    }
+  }
 
+  render() {
+    const history = createBrowserHistory();
+    return (
+        <Router>
+          {
+            this.state.initDone
+                ?
+                <div id={"app"}>
+                  <Switch>
+                    <Route exact path={"/"} component={HomeContainer}/>
+                    <Route exact path={"/city"} render={(props) => (
+                        <City props={props}/>
+                    )}/>
+                    <Route path={"/search/:category/:keyword?"} render={(props) => (
+                        <Search props={props}/>
+                    )}/>
+                    <Route path={"/detail/:id"} render={(props) => (
+                        <Detail props={props}/>
+                    )}/>
+                    <Route path={"/user"} render={(props) => (
+                        <User props={props}/>
+                    )}/>
+                    <Route path={"/login/:router?"} render={(props) => (
+                        <Login props={props}/>
+                    )}/>
+                    <Route render={(props) => (
+                        <NotFound props={props}/>
+                    )}/>
+                  </Switch>
+                  <FooterContainer history={history}/>
+                </div>
+                :
+                <div>loading...</div>
+          }
+        </Router>
+    );
+  }
 }

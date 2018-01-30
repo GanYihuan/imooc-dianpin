@@ -110,58 +110,36 @@ class AppContainer extends Component {
           {
             this.state.initDone
                 ?
-                <div id="app">
+                <div id={"app"}>
                   <Switch>
-                    <Route
-                        exact
-                        path="/"
-                        component={HomeContainer}
-                    />
-                    <Route
-                        exact
-                        path="/city"
-                        render={(props) => (
-                            <City props={props}/>
-                        )}
-                    />
+                    <Route exact path={"/"} component={HomeContainer}/>
+                    <Route exact path={"/city"} render={(props) => (
+                        <City props={props}/>
+                    )}/>
                     {/*
                     /search/:category(/:keyword)
                      其中/search是路径，/:category是必填参数，(/:keyword)是选填参数。
                      */}
-                    <Route
-                        path="/search/:category/:keyword?"
-                        render={(props) => (
-                            <Search props={props}/>
-                        )}
-                    />
-                    <Route
-                        path="/detail/:id"
-                        render={(props) => (
-                            <Detail props={props}/>
-                        )}
-                    />
-                    <Route
-                        path="/user"
-                        render={(props) => (
-                            <User props={props}/>
-                        )}
-                    />
-                    <Route
-                        path="/login/:router?"
-                        render={(props) => (
-                            <Login props={props}/>
-                        )}
-                    />
-                    <Route
-                        render={(props) => (
-                            <NotFound props={props}/>
-                        )}
-                    />
+                    <Route path={"/search/:category/:keyword?"} render={(props) => (
+                        <Search props={props}/>
+                    )}/>
+                    <Route path={"/detail/:id"} render={(props) => (
+                        <Detail props={props}/>
+                    )}/>
+                    <Route path={"/user"} render={(props) => (
+                        <User props={props}/>
+                    )}/>
+                    <Route path={"/login/:router?"} render={(props) => (
+                        <Login props={props}/>
+                    )}/>
+                    <Route render={(props) => (
+                        <NotFound props={props}/>
+                    )}/>
                   </Switch>
                   <FooterContainer history={history}/>
                 </div>
                 :
-                <div>正在加载...</div>
+                <div>loading...</div>
           }
         </Router>
     )
