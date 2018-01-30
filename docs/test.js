@@ -9,14 +9,16 @@ class HomeHeader extends Component {
   constructor(props) {
     super(props);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
-    this.state = {
+    this.state({
       keyword: ''
-    }
+    })
   }
 
   render() {
     return (
-        <div id={styles['home-header']} className={'clear-fix'}></div>
+        <div id={styles['home-header']} className={styles['clear-fix']}>
+
+        </div>
     )
   }
 }

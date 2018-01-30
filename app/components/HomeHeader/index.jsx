@@ -16,7 +16,7 @@ class HomeHeader extends Component {
 
   render() {
     return (
-        <div id={styles['home-header']} className={'clear-fix'}>
+        <div id={styles['home-header']} className={styles['clear-fix']}>
           <div className={styles['home-header-left'] + ' float-left'}>
             <Link to={'/city'}>
               <span>{this.props.cityName}</span>
