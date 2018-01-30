@@ -29,12 +29,26 @@ class Category extends Component {
           <ReactSwipe swipeOptions={opt}>
             <div className={styles['carousel-item']}>
               <ul className={styles['clear-fix']}>
-                <Link to={}>
-
+                <Link to={'/search/jingdian'}>
+                  <li className={styles['jindian'] + ' float-left'}></li>
+                </Link>
+                <Link to={'/search/ktv'}>
+                  <li className={styles['gouwu'] + ' float-left'}></li>
+                </Link>
+                <Link to={'/search/shengofuwu'}>
+                  <li className={styles['shenhuofuwu'] + ' float-left'}></li>
                 </Link>
               </ul>
             </div>
           </ReactSwipe>
+          <div className={styles['index-container']}>
+            <ul>
+              <li
+                className={this.state.index === 0 ? styles['selected'] : ''}
+                data-index={'0'}
+              />
+            </ul>
+          </div>
         </div>
     )
   }

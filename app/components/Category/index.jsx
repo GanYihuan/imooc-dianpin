@@ -141,17 +141,17 @@ class Category extends Component {
             <ul>
               <li
                   className={this.state.index === 0 ? styles['selected'] : ''}
-                  data-index='0'
+                  data-index={'0'}
                   onClick={this.SwipeCategory.bind(this)}
               />
               <li
                   className={this.state.index === 1 ? styles['selected'] : ''}
-                  data-index='1'
+                  data-index={'1'}
                   onClick={this.SwipeCategory.bind(this)}
               />
               <li
                   className={this.state.index === 2 ? styles['selected'] : ''}
-                  data-index='2'
+                  data-index={'2'}
                   onClick={this.SwipeCategory.bind(this)}
               />
             </ul>
