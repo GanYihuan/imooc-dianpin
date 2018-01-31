@@ -1,13 +1,16 @@
 import React, {Component} from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
+// redux
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import * as userinfoActions from '../../actions/userinfo';
+// localStorage
+import {CITYNAME} from '../../config/localStorekey';
+import LocalStore from '../../util/localStore';
+// component
 import Header from '../../components/Header';
 import CurrentCity from '../../components/CurrentCity';
 import CityList from '../../components/CityList';
-import * as userinfoActions from '../../actions/userinfo';
-import {CITYNAME} from '../../config/localStorekey';
-import LocalStore from '../../util/localStore';
 
 
 class City extends Component {

@@ -11,9 +11,9 @@ class Header extends Component {
 
   render() {
     return (
-        <div id={styles["common-header"]}>
+        <div id={styles['common-header']}>
 					<span
-              className={styles["back-icon"]}
+              className={styles['back-icon']}
               onClick={this.clickHandle.bind(this)}
           >
 						<i className="icon-chevron-left"/>
