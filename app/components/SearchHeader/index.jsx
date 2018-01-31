@@ -13,14 +13,14 @@ class SearchHeader extends Component {
   render() {
     return (
         <div
-            id={styles["search-header"]}
-            className="clear-fix"
+            id={styles['search-header']}
+            className={styles['clear-fix']}
         >
 					<span
-              className={styles["back-icon"] + " float-left"}
+              className={styles['back-icon'] + ' float-left'}
               onClick={this.clickHandle.bind(this)}
           >
-						<i className="icon-chevron-left"/>
+						<i className={styles['icon-chevron-left']}/>
 					</span>
           <SearchInput
               value={this.props.keyword}

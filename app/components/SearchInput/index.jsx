@@ -15,7 +15,7 @@ class SearchInput extends Component {
   render() {
     return (
         <div className={styles['search-container']}>
-          <i className="icon-search"/>
+          <i className={styles['icon-search']}/>
           <input
               type="text"
               placeholder="请输入关键字"

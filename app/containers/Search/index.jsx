@@ -37,6 +37,7 @@ class Search extends Component {
   }
 }
 
+// redux
 function mapStateToProps(state) {
   return {
     userinfo: state.userinfo

@@ -55,7 +55,7 @@ class SearchList extends Component {
     const keyword = this.props.keyword || '';
     const category = this.props.category;
     const result = getSearchData(0, cityName, category, keyword);
-    this.resultHandle(result)
+    this.resultHandle(result);
   }
 
   // 加载更多数据
@@ -122,6 +122,7 @@ class SearchList extends Component {
   }
 }
 
+// redux
 function mapStateToProps(state) {
   return {
     userinfo: state.userinfo

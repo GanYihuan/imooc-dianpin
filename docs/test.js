@@ -1,25 +1,28 @@
-import React, {Component} from 'react';
+import React, {Componnet} from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
+// redux
 import {bindActionCreators} from 'redux';
-import {connet} from 'react-redux';
-import * as userinfoActions from '';
+import {connect} from 'react-redux';
+import * as userinfoActions from '../../actions/userinfo';
+// LocalStorage
 import {CITYNAME} from "../app/config/localStorekey";
 import LocalStore from '';
-import Header from '';
-import CurrentCity from '';
-import CityList from '';
+// Component
+import Header from '../../components/Header';
+import CurrentCity from '../../components/CurrentCity';
+import CityList from '../../components/CityList';
 
 
-class City extends Component {
+class City extends Componnet {
   constructor(props) {
     super(props);
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+    this.shouldComponentUpdate = PureRenderMixin.shouldComoponentUpdate.bind(this);
   }
 
   render() {
     return (
         <div>
-          <Header title={''}/>
+          <Header title={'选择城市'}/>
           <CurrentCity cityName={this.props.userinfo.cityName}/>
           <CityList changeFn={this.changeCity.bind(this)}/>
         </div>
@@ -37,23 +40,3 @@ class City extends Component {
     this.props.history.push('/');
   }
 }
-
-// 第三步：定义数据变化后派发规则
-// userinfo: 变成props里的一个能用的参数
-function mapStateToProps(state) {
-  return {
-    userinfo: state.userinfo
-  }
-}
-
-// 第四步：触发规则变化
-function mapDispatchToProps(dispatch) {
-  return {
-    userinfoAction: bindActionCreators(userinfoActions, dispatch)
-  }
-}
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(City)
