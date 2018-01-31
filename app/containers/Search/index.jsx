@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
+// redux
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as appActions from '../../actions/app';
+// component
 import SearchHeader from '../../components/SearchHeader';
 import SearchList from './subpage/List';
 
