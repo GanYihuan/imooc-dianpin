@@ -11,13 +11,10 @@ class LoadMore extends Component {
 
   render() {
     return (
-        <div
-            className={styles["load-more"]}
-            ref="wrapper"
-        >
+        <div className={styles['load-more']} ref={'wrapper'}>
           {
             this.props.isLoadingMore
-                ? <span>加载中...</span>
+                ? <span>loading...</span>
                 : <span onClick={this.loadMoreHandle.bind(this)}>加载更多</span>
           }
         </div>
@@ -27,6 +24,7 @@ class LoadMore extends Component {
   componentDidMount() {
     const wrapper = this.refs.wrapper;
     const loadMoreFn = this.props.loadMoreFn;
+
     function callback() {
       // 距离页面顶部距离
       const top = wrapper.getBoundingClientRect().top;
@@ -37,6 +35,7 @@ class LoadMore extends Component {
         loadMoreFn();
       }
     }
+
     // 滚动事件
     let timeAction;
     window.addEventListener('scroll', () => {

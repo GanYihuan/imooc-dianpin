@@ -14,10 +14,10 @@ class List extends Component {
     this.state = {
       // 有没有更多数据？需要后端返回
       hasMore: false,
-      // 储存列表信息
-      data: [],
       // 是加载中吗？
       isLoadingMore: false,
+      // 储存列表信息
+      data: [],
       // 记录下一页页码，首页为0
       page: 0
     }
@@ -26,7 +26,7 @@ class List extends Component {
   render() {
     return (
         <div>
-          <h2 className={styles["home-list-title"]}>猜你喜欢</h2>
+          <h2 className={styles['home-list-title']}>猜你喜欢</h2>
           {
             this.state.data.length
                 ? <HomeList data={this.state.data}/>
@@ -82,9 +82,9 @@ class List extends Component {
           const hasMore = json.hasMore;
           this.setState({
             hasMore: hasMore,
+            isLoadingMore: false,
             // 数据拼接上去
             data: this.state.data.concat(data),
-            isLoadingMore: false
           })
         })
         .catch((err) => {

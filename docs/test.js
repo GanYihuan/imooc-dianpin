@@ -3,7 +3,7 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 import styles from '';
 
 
-class HomeAd extends Component {
+class LoadMore extends Component {
   constructor(props) {
     super(props);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
@@ -11,27 +11,41 @@ class HomeAd extends Component {
 
   render() {
     return (
-        <div id={styles['home-ad']}>
-          <h2></h2>
-          <div className={styels['ad-container'] + ' clear-fix'}>
-            {
-              this.props.data.map((item, index) => {
-                return (
-                    <div
-                      key={index}
-                      className={styles['ad-item'] + ' float-left'}
-                    >
-                      <a href={item.link} target={'_blank'}>
-                        <img src={item.img} alt={item.title}/>
-                      </a>
-                    </div>
-                )
-              })
-            }
-          </div>
+        <div className={styles['load-more']} ref={'wrapper'}>
+          {
+            this.props.isLoadMore
+                ? <span>loading...</span>
+                : <span onClick={this.loadMoreHandle.bind(this)}></span>
+          }
         </div>
     )
   }
-}
 
-export default HomeAd;
+  componentDidMount() {
+    const wrapper = this.refs.wrapper;
+    const laodMoreFn = this.props.loadMoreFn;
+
+    function callback() {
+      const top = wrapper.getBoundingClientReact().top;
+      const windowHeight = window.screen.height;
+      if (top && top < windowHeight) {
+        loadMoreFn();
+      }
+    }
+
+    let timeAction;
+    window.addEventListener('scroll', () => {
+      if (this.props.isLoadingMore) {
+        return;
+      }
+      if (timeAction) {
+        clearTimeout(timeAction);
+      }
+      timeAction = setTimeout(callback, 50);
+    })
+  }
+
+  loadMoreHandle() {
+    this.props.loadMoreFn();
+  }
+}
