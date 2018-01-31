@@ -20,7 +20,7 @@ class SearchHeader extends Component {
               className={styles['back-icon'] + ' float-left'}
               onClick={this.clickHandle.bind(this)}
           >
-						<i className="icon-chevron-left"/>
+						<i className={'icon-chevron-left'}></i>
 					</span>
           <SearchInput
               value={this.props.keyword}

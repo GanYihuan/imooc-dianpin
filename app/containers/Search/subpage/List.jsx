@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
+// redux
 import {connect} from 'react-redux';
-import ListCompoent from '../../../components/List';
-import LoadMore from '../../../components/LoadMore';
 import {getSearchData} from '../../../fetch/search/search';
 import ListData from '../../../../mockServer/search/list';
+// component
+import ListCompoent from '../../../components/List';
+import LoadMore from '../../../components/LoadMore';
 
 
 const initialState = {
@@ -19,7 +21,7 @@ class SearchList extends Component {
   constructor(props, context) {
     super(props, context);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
-    this.state = initialState
+    this.state = initialState;
   }
 
   render() {
@@ -64,8 +66,8 @@ class SearchList extends Component {
     this.setState({
       isLoadingMore: true
     });
-    const cityName = this.props.userinfo.cityName;
     const page = this.state.page;
+    const cityName = this.props.userinfo.cityName;
     const keyword = this.props.keyword || '';
     const category = this.props.category;
     const result = getSearchData(page, cityName, category, keyword);
@@ -80,7 +82,7 @@ class SearchList extends Component {
       page: page + 1
     });
     result
-        .then(res => {
+        .then((res) => {
           if (res.ok) {
             return res.json()
           } else {
@@ -90,17 +92,17 @@ class SearchList extends Component {
             return ListData;
           }
         })
-        .then(json => {
+        .then((json) => {
           const hasMore = json.hasMore;
           const data = json.data;
           this.setState({
             hasMore: hasMore,
+            isLoadingMore: false,
             // 注意，这里讲最新获取的数据，拼接到原数据之后，使用 concat 函数
             data: this.state.data.concat(data),
-            isLoadingMore: false
           })
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err.message);
         })
   }

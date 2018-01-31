@@ -17,8 +17,8 @@ class SearchInput extends Component {
         <div className={styles['search-container']}>
           <i className={styles['icon-search']}/>
           <input
-              type="text"
-              placeholder="请输入关键字"
+              type={'text'}
+              placeholder={'请输入关键字'}
               // 非约束性,dom的操作，优化能力差
               // defaultValue就是原生DOM中的value属性
               // <input ref="input" defaultValue="1"/>
