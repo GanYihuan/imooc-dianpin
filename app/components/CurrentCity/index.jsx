@@ -11,7 +11,7 @@ class CurrentCity extends Component {
 
   render() {
     return (
-        <div className={styles["current-city"]}>
+        <div className={styles['current-city']}>
           {this.props.cityName}
         </div>
     )
