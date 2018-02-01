@@ -60,7 +60,8 @@ class Login extends Component {
     let userinfo = this.props.userinfo;
     userinfo.username = username;
     actions.update(userinfo);
-    // appContainer: line57
+    // get :router
+    // appContainer: <Route path={"/login/:router?"}
     const router = this.props.match.params.router;
     if (router) {
       this.props.history.push(router);
