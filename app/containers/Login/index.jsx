@@ -34,22 +34,6 @@ class Login extends Component {
     this.docheck();
   }
 
-  // handle login success
-  loginHandle(username) {
-    // redux
-    const actions = this.props.userInfoActions;
-    let userinfo = this.props.userinfo;
-    userinfo.username = username;
-    actions.update(userinfo);
-    // appContainer: line57
-    const router = this.props.match.params.router;
-    if (router) {
-      this.props.history.push(router);
-    } else {
-      this.goUserPage();
-    }
-  }
-
   // check login or not
   docheck() {
     const userinfo = this.props.userinfo;
@@ -64,6 +48,22 @@ class Login extends Component {
 
   goUserPage() {
     this.props.history.push('/user');
+  }
+
+  // handle login success
+  loginHandle(username) {
+    // redux
+    const actions = this.props.userInfoActions;
+    let userinfo = this.props.userinfo;
+    userinfo.username = username;
+    actions.update(userinfo);
+    // appContainer: line57
+    const router = this.props.match.params.router;
+    if (router) {
+      this.props.history.push(router);
+    } else {
+      this.goUserPage();
+    }
   }
 }
 
