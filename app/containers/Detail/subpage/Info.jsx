@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
+// data
 import {getDetail} from '../../../fetch/detail/detail';
-import DetailInfo from '../../../components/DetailInfo';
 import InfoData from '../../../../mockServer/detail/info';
+// compnent
+import DetailInfo from '../../../components/DetailInfo';
 
 
 class Info extends Component {
@@ -20,7 +22,7 @@ class Info extends Component {
           {
             this.state.info
                 ? <DetailInfo data={this.state.info}/>
-                : <div>正在加载...</div>
+                : <div>loading...</div>
           }
         </div>
     )
@@ -30,7 +32,7 @@ class Info extends Component {
     const id = this.props.id;
     const result = getDetail(id);
     result
-        .then(res => {
+        .then((res) => {
           if (res.ok) {
             return res.json();
           } else {
@@ -38,12 +40,13 @@ class Info extends Component {
             return InfoData;
           }
         })
-        .then(json => {
+        .then((json) => {
           this.setState({
+            // !!a == true, if(a){} will running
             info: json
           })
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err.message);
         })
   }

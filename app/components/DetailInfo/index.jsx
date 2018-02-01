@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
+// Component
 import Star from '../Star';
 import styles from './style.less';
 
@@ -12,7 +13,6 @@ class DetailInfo extends Component {
 
   render() {
     const data = this.props.data;
-
     return (
         <div className={styles["detail-info-container"]}>
           <div className={styles["info-container"] + " clear-fix"}>

@@ -1,9 +1,11 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
+// data
+import CommentData from '../../../../mockServer/detail/comment';
 import {getCommentData} from '../../../fetch/detail/detail';
+// component
 import ListComponent from '../../../components/CommentList';
 import LoadMore from '../../../components/LoadMore';
-import CommentData from '../../../../mockServer/detail/comment';
 import styles from './style.less';
 
 
@@ -67,14 +69,14 @@ class Comment extends React.Component {
   // 处理数据
   resultHandle(result) {
     result
-        .then(res => {
+        .then((res) => {
           if (res.ok) {
             return res.json()
           } else {
             return CommentData
           }
         })
-        .then(json => {
+        .then((json) => {
           // 增加 page
           const page = this.state.page;
           const hasMore = json.hasMore;
@@ -87,7 +89,7 @@ class Comment extends React.Component {
             data: this.state.data.concat(data)
           })
         })
-        .catch(err => {
+        .catch((err) => {
           console.error('详情页获取用户评论数据出错, ', err.message);
         })
   }
