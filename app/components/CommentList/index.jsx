@@ -18,10 +18,7 @@ class CommentList extends Component {
           {
             data.map((item, index) => {
               return (
-                  <Item
-                      key={index}
-                      data={item}
-                  />
+                  <Item key={index} data={item}/>
               )
             })
           }

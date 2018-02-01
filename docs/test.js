@@ -1,67 +1,89 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-// redux
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import * as userInfoActionsFromOtherFiles from '../../actions/userinfo';
-// router
-import {HashRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
-// Compnoent
-import Header from '../../components/Header/index'
-import LoginComponent from './subpage/LoginComponent';
+// data
+import CommentData from '../../../../mockServer/detail/comment';
+import {getCommentData} from '../../../fetch/detail/detail';
+// component
+import ListComponent from '../../../components/CommentList';
+import LoadMore from '../../../components/LoadMore';
+import styles from './style.less';
 
 
-class Login extends Component {
+class Comment extends Comment {
   constructor(props) {
     super(props);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = {
-      checking: true
+      data: [],
+      hasMore: false,
+      isLoadingMore: false,
+      page: 0
     }
   }
 
   render() {
     return (
-        <div>
-          <Header title={'login'}/>
+        <div className={styles['detail-comment-subpage']}>
+          <h2></h2>
           {
-            this.state.checking
-                ? <div>{/* waiting */}</div>
-                : <LoginComponent loginHandle={this.loginHandle.bind(this)}/>
+            this.state.data.length
+                ? <ListComponent data={this.state.data}/>
+                : <div className={styles['loading']}>loading...</div>
+          }
+          {
+            this.state.hasMore
+                ?
+                <LoadMore
+                    isLoadingMore={this.state.isLoadingMore}
+                    loadMoreFn={this.loadMoreData.bind(this)}
+                /> : ''
           }
         </div>
     )
   }
 
   componentDidMount() {
-    this.docheck();
+    this.loadFirstPageData();
   }
 
-  docheck() {
-    const userinfo = this.props.userinfo;
-    if(userinfo.username) {
-      this.goUserPage();
-    }else{
-      this.setState({
-        checking: false
-      })
-    }
+  loadFirstPageData() {
+    const id = this.props.id;
+    const result = getCommentData(0, id);
+    this.resultHandle(result);
   }
 
-  goUserPage() {
-    this.props.history.push('/user');
+  loadMoreData() {
+    this.setState({
+      isLoadingMore: true
+    });
+    const id = this.props.id;
+    const page = this.state.page;
+    const result = getCommentData(page, id);
+    this.resultHandle(result);
   }
 
-  loginHandle(username) {
-    const actions = this.props.userinfoAction;
-    let userinfo = this.props.userinfo;
-    userinfo.username = username;
-    actions.update(userinfo);
-    const router = this.props.match.params.router;
-    if(router) {
-      this.props.history.push(router);
-    }else{
-      this.goUserPage();
-    }
+  resultHandle(result) {
+    result
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          }else{
+            return CommentData
+          }
+        })
+        .then((json) => {
+          const page = this.state.page;
+          const hasMore = json.hasMore;
+          const data = json.data;
+          this.setState({
+            page: page + 1,
+            hasMore: hasMore,
+            isLoadingMore: false,
+            data: this.state.data.concat(data)
+          })
+        })
+        .catch((err) => {
+          console.log(err.message);
+        })
   }
 }

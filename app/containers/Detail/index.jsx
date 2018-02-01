@@ -23,12 +23,9 @@ class Detail extends Component {
     const id = this.props.match.params.id;
     return (
         <div>
-          <Header title="商户详情"/>
+          <Header title={'商户详情'}/>
           <Info id={id}/>
-          <Buy
-              id={id}
-              history={this.props.history}
-          />
+          <Buy id={id} history={this.props.history}/>
           <Comment id={id}/>
         </div>
     )
