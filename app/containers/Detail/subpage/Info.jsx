@@ -30,7 +30,7 @@ class Info extends Component {
     const id = this.props.id;
     const result = getDetail(id);
     result
-        .then(res => {
+        .then((res) => {
           if (res.ok) {
             return res.json();
           } else {
@@ -38,7 +38,7 @@ class Info extends Component {
             return InfoData;
           }
         })
-        .then(json => {
+        .then((json) => {
           this.setState({
             info: json
           })

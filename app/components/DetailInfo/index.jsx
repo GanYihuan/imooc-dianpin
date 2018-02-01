@@ -12,7 +12,6 @@ class DetailInfo extends Component {
 
   render() {
     const data = this.props.data;
-
     return (
         <div className={styles["detail-info-container"]}>
           <div className={styles["info-container"] + " clear-fix"}>
