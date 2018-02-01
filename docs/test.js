@@ -1,105 +1,67 @@
 import React, {Component} from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
+// redux
 import {connect} from 'react-redux';
-import {getSearchData} from "../app/fetch/search/search";
-import ListData from '';
-import ListComponent from '';
-import LoadMore from '';
+import {bindActionCreators} from 'redux';
+import * as userInfoActionsFromOtherFiles from '../../actions/userinfo';
+// router
+import {HashRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
+// Compnoent
+import Header from '../../components/Header/index'
+import LoginComponent from './subpage/LoginComponent';
 
 
-const initialState = {
-  data: [],
-  hasMore: false,
-  isLoadingMore: false,
-  page: 0
-};
-
-
-class SearchList extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
-    this.state = initialState;
+    this.state = {
+      checking: true
+    }
   }
 
   render() {
     return (
         <div>
+          <Header title={'login'}/>
           {
-            this.state.data.length
-                ? <ListComponent data={this.state.data}/>
-                : <div></div>
-          }
-          {
-            this.state.hasMore
-                ?
-                <LoadMore
-                    isLoadMore={this.state.isLoadingMore}
-                    loadMoreFn={this.loadMoreData.bind(this)}
-                /> : ''
+            this.state.checking
+                ? <div>{/* waiting */}</div>
+                : <LoginComponent loginHandle={this.loginHandle.bind(this)}/>
           }
         </div>
     )
   }
 
   componentDidMount() {
-    this.loadFirstPageData();
+    this.docheck();
   }
 
-  loadFirstPageData() {
-    const cityName = this.props.userinfo.cityName;
-    const keyword = this.props.keyword || '';
-    const category = this.props.category;
-    const result = getSearchData(0, cityName, category, keyword);
-    this.resultHandle(result);
-  }
-
-  loadMoreData() {
-    this.setState({
-      isLoadingMore: true
-    });
-    const page = this.state.page;
-    const cityName = this.props.userinfo.cityName;
-    const keyword = this.props.keyword || '';
-    const category = this.props.category;
-    const result = getSearchData(page, cityName, category, keyword);
-    this.resultHandle(result);
-  }
-
-  resultHandle(result) {
-    const page = this.state.page;
-    this.setState({
-      page: page + 1
-    });
-    result
-        .then((res) => {
-          if (res.ok) {
-            return res.json();
-          } else {
-            return ListData
-          }
-        })
-        .then((json) => {
-          const hasMore = json.hasMore;
-          const data = json.data;
-          this.setState({
-            hasMore: hasMore,
-            isLoadingMore: false,
-            data: this.state.data.concat(data),
-          })
-        })
-        .catch((err) => {
-          console.log(err.message);
-        })
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    const keyword = this.props.keyword;
-    const category = this.props.category;
-    if (keyword === prevProps.keyword && category === prevProps.category) {
-      return
+  docheck() {
+    const userinfo = this.props.userinfo;
+    if(userinfo.username) {
+      this.goUserPage();
+    }else{
+      this.setState({
+        checking: false
+      })
     }
-    this.setState(initialState);
-    this.loadFirstPageData();
+  }
+
+  goUserPage() {
+    this.props.history.push('/user');
+  }
+
+  loginHandle(username) {
+    const actions = this.props.userinfoAction;
+    let userinfo = this.props.userinfo;
+    userinfo.username = username;
+    actions.update(userinfo);
+    const router = this.props.match.params.router;
+    if(router) {
+      this.props.history.push(router);
+    }else{
+      this.goUserPage();
+    }
   }
 }
