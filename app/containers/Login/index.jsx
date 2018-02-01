@@ -9,8 +9,8 @@ import LoginComponent from './subpage/LoginComponent';
 
 
 class Login extends Component {
-  constructor(props, context) {
-    super(props, context);
+  constructor(props) {
+    super(props);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = {
       checking: true
