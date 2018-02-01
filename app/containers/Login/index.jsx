@@ -20,7 +20,7 @@ class Login extends Component {
   render() {
     return (
         <div>
-          <Header title={"login"}/>
+          <Header title={'login'}/>
           {
             this.state.checking
                 ? <div>{/* waiting */}</div>
