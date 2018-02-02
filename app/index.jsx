@@ -1,6 +1,6 @@
 import React from 'react';
 import {render} from 'react-dom';
-// redux.
+// redux
 import {Provider} from 'react-redux';
 import configureStore from './store/configureStore';
 // react-router.
