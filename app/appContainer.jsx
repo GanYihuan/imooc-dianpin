@@ -56,8 +56,8 @@ const User = (props) => (
     </Bundle>
 );
 
-// match={props.props.match}: 传递了params, redux所有参数
-// /detail/:id ->  /:id 参数
+// match={props.props.match}: passed params, redux all parameters
+// /detail/:id ->  /:id  it's parameters
 const Login = (props) => (
     <Bundle load={LoginContainer}>
       {
@@ -118,7 +118,7 @@ class AppContainer extends Component {
                     )}/>
                     {/*
                     /search/:category(/:keyword)
-                     其中/search是路径，/:category是必填参数，(/:keyword)是选填参数。
+                     /search it's path，/:category it's required parameters，(/:keyword) it's optional parameters。
                      */}
                     <Route path={"/search/:category/:keyword?"} render={(props) => (
                         <Search props={props}/>
@@ -147,12 +147,12 @@ class AppContainer extends Component {
 
   componentDidMount() {
     let cityName = LocalStore.getItem(CITYNAME);
-    // 不希望cityName为undefind或null
-    // 这是唯一用 == 号地方，其它时候用 ===
+    // don't want cityName undefind/null
+    // the only way use '=='，otherwise use '==='
     if (cityName == null) {
       cityName = '上海'
     }
-    // 城市信息保存到redux中，redux能实现数据共享
+    // city message saved into redux，redux can shared data
     // update: app/actions/userinfo.js
     this.props.userInfoActions.update({
       cityName: cityName
@@ -164,14 +164,16 @@ class AppContainer extends Component {
 }
 
 // Redux
-// 第三步：定义数据变化后派发规则
+// third step：Define distribution rules after data changes
+// state Passed into react as a property
 function mapStateToProps(state) {
   return {
     userinfo: state.userinfo
   }
 }
 
-// 第四步：触发规则变化
+// Fourth Step：触发规则变化
+// action Passed into react as a property
 function mapDispatchToProps(dispatch) {
   return {
     userInfoActions: bindActionCreators(userInfoActionsFromOtherFiles, dispatch)

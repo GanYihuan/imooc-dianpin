@@ -4,6 +4,8 @@ import * as actionTypes from '../constants/store';
 const initialState = [];
 
 
+// redux
+// First step: Calculating rules
 export default function store(state = initialState, action) {
   switch (action.type) {
     case actionTypes.STORE_UPDATE:

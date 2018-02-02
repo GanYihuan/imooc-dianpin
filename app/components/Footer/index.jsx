@@ -12,7 +12,7 @@ class Footer extends Component {
   }
 
   render() {
-    //    /Users/ganyihuan/Documents/Code/Web/RN/dianpin/app/actions/app.js
+    //  app/actions/app.js
     const menu = this.props.app.location;
     return (
         <div>
@@ -49,12 +49,9 @@ class Footer extends Component {
         </div>
     )
   }
-
-  componentDidMount() {
-
-  }
 }
 
+// redux
 function mapStateToProps(state) {
   return {
     app: state.app

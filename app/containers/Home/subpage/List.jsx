@@ -12,13 +12,13 @@ class List extends Component {
     super(props);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = {
-      // 有没有更多数据？需要后端返回
+      // have more data? Requires back-end return
       hasMore: false,
-      // 是加载中吗？
+      // Is it loaded?
       isLoadingMore: false,
-      // 储存列表信息
+      // Store list information
       data: [],
-      // 记录下一页页码，首页为0
+      // Record next page number, home 0
       page: 0
     }
   }
@@ -83,7 +83,7 @@ class List extends Component {
           this.setState({
             hasMore: hasMore,
             isLoadingMore: false,
-            // 数据拼接上去
+            // Data stitching up
             data: this.state.data.concat(data),
           })
         })
