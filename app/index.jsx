@@ -8,7 +8,7 @@ import configureStore from './store/configureStore';
 // otherwise use 'react-router-dom'
 import {BrowserRouter, HashRouter} from 'react-router-dom';
 import AppContainer from './appContainer';
-// style
+// style.
 import './static/css/common.less';
 import './static/css/font.less';
 
