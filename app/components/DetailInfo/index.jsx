@@ -28,7 +28,10 @@ class DetailInfo extends Component {
               <p className={styles["sub-title"]}>{data.subTitle}</p>
             </div>
           </div>
-          {/* dangerouslySetInnerHTML: <br/>变成可用的html标签,不常用, 导致XSS攻击 */}
+          {/*
+            dangerouslySetInnerHTML: <br/> Become available HTML tags, not commonly used,
+            leading to XSS attacks
+          */}
           <p
               dangerouslySetInnerHTML={{__html: data.desc}}
               className={styles["info-desc"]}
