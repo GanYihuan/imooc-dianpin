@@ -105,7 +105,7 @@ class Item extends Component {
     if (!value) {
       return
     }
-    // callback func, let orther js call commentOK func
+    // callback func, let orther js call commentOK func.
     submitComment(id, value, this.commentOK.bind(this));
   }
 }
