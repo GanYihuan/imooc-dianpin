@@ -33,7 +33,7 @@ class User extends Component {
   }
 
   componentDidMount() {
-    // 如果未登录, 返回登录页
+    // If you are not logged in, return to the login page
     if (!this.props.userinfo.username) {
       this.props.history.push('/login');
     }

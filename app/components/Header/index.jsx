@@ -24,6 +24,10 @@ class Header extends Component {
   }
 
   clickHandle() {
+    // when loginning, jump to user-page,
+    // then press chrome back button, will return to login-page,
+    // but you have loginning, so login-page immediate jump to user-page, not effect
+    // backRouter: "/" return to home-page
     const backRouter = this.props.backRouter;
     if (backRouter) {
       this.props.history.push(backRouter);

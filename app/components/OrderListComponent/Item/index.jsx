@@ -8,9 +8,9 @@ class Item extends Component {
     super(props);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = {
-      // 0: 未评价
-      // 1: 评价中
-      // 2: 已评价
+      // 0: Not evaluated
+      // 1: evaluating
+      // 2: evaluated
       commentState: 2
     }
   }
@@ -49,7 +49,7 @@ class Item extends Component {
                   ?
                   <div>
                     <textarea
-                        ref="commentText"
+                        ref={'commentText'}
                         className={styles["textarea"]}
                     />
                     <button

@@ -5,8 +5,8 @@ import styles from './style.less';
 
 
 class OrderListComponent extends React.Component {
-  constructor(props, context) {
-    super(props, context);
+  constructor(props) {
+    super(props);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
 

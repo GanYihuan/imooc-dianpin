@@ -38,20 +38,19 @@ class OrderList extends Component {
     }
   }
 
-  // 获取列表数据
   loadOrderList(username) {
     const result = getOrderListData(username);
     result
-        .then(res => {
+        .then((res) => {
           return res.json()
         })
-        .then(json => {
+        .then((json) => {
           console.log(json);
           this.setState({
             data: json
           });
         })
-        .catch(ex => {
+        .catch((ex) => {
           if (__DEV__) {
             console.log("error: " + ex.message);
           }
@@ -61,12 +60,12 @@ class OrderList extends Component {
   submitComment(id, value, callback) {
     const result = postComment(id, value);
     result
-        .then(res => {
+        .then((res) => {
           return res.json()
         })
-        .then(json => {
+        .then((json) => {
           if (json.errno === 0) {
-            // 已经评价，修改状态
+            // Already evaluated, modified status
             // app/components/OrderListComponent/Item/index.jsx
             // callback -> commentOK()
             callback()
