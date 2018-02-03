@@ -42,7 +42,7 @@ class LoadMore extends Component {
       if (this.props.isLoadingMore) {
         return;
       }
-      // Clean Time Setup First
+      // Clean Time Setup First.
       if (timeAction) {
         clearTimeout(timeAction);
       }
