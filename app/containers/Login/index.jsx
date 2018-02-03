@@ -37,7 +37,7 @@ class Login extends Component {
     this.docheck();
   }
 
-  // check login or not
+  // check login or not.
   docheck() {
     const userinfo = this.props.userinfo;
     if (userinfo.username) {
