@@ -82,7 +82,9 @@ class Comment extends Component {
             page: page + 1,
             hasMore: hasMore,
             isLoadingMore: false,
-            // 注意，这里讲最新获取的数据，拼接到原数据之后，使用 concat 函数
+            // Note that this is the latest available data,
+            // and after stitching to the original data,
+            // use the CONCAT function
             data: this.state.data.concat(data)
           })
         })
