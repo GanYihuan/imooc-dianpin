@@ -112,9 +112,9 @@ class SearchList extends Component {
     if (keyword === prevProps.keyword && category === prevProps.category) {
       return
     }
-    // Reset State
+    // Reset State.
     this.setState(initialState);
-    // Reload data agan
+    // Reload data agan.
     this.loadFirstPageData();
   }
 }
