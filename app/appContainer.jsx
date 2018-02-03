@@ -74,10 +74,12 @@ const Login = (props) => (
 const Detail = (props) => (
     <Bundle load={DetailContainer}>
       {
-        (Detail) => <Detail
-            history={props.props.history}
-            match={props.props.match}
-        />
+        (Detail) => (
+            <Detail
+                history={props.props.history}
+                match={props.props.match}
+            />
+        )
       }
     </Bundle>
 );
@@ -94,8 +96,8 @@ const NotFound = (props) => (
 
 
 class AppContainer extends Component {
-  constructor(props, context) {
-    super(props, context);
+  constructor(props) {
+    super(props);
     // Avoid invalid rendering
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = {
@@ -112,29 +114,51 @@ class AppContainer extends Component {
                 ?
                 <div id={"app"}>
                   <Switch>
-                    <Route exact path={"/"} component={HomeContainer}/>
-                    <Route exact path={"/city"} render={(props) => (
-                        <City props={props}/>
-                    )}/>
+                    <Route
+                        exact
+                        path={"/"}
+                        component={HomeContainer}
+                    />
+                    <Route
+                        exact
+                        path={"/city"}
+                        render={(props) => (
+                            <City props={props}/>
+                        )}
+                    />
                     {/*
                     /search/:category(/:keyword)
                      /search it's path，/:category it's required parameters，(/:keyword) it's optional parameters。
                      */}
-                    <Route path={"/search/:category/:keyword?"} render={(props) => (
-                        <Search props={props}/>
-                    )}/>
-                    <Route path={"/detail/:id"} render={(props) => (
-                        <Detail props={props}/>
-                    )}/>
-                    <Route path={"/user"} render={(props) => (
-                        <User props={props}/>
-                    )}/>
-                    <Route path={"/login/:router?"} render={(props) => (
-                        <Login props={props}/>
-                    )}/>
-                    <Route render={(props) => (
-                        <NotFound props={props}/>
-                    )}/>
+                    <Route
+                        path={"/search/:category/:keyword?"}
+                        render={(props) => (
+                            <Search props={props}/>
+                        )}
+                    />
+                    <Route
+                        path={"/detail/:id"}
+                        render={(props) => (
+                            <Detail props={props}/>
+                        )}
+                    />
+                    <Route
+                        path={"/user"}
+                        render={(props) => (
+                            <User props={props}/>
+                        )}
+                    />
+                    <Route
+                        path={"/login/:router?"}
+                        render={(props) => (
+                            <Login props={props}/>
+                        )}
+                    />
+                    <Route
+                        render={(props) => (
+                            <NotFound props={props}/>
+                        )}
+                    />
                   </Switch>
                   <FooterContainer history={history}/>
                 </div>
