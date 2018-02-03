@@ -72,17 +72,17 @@ class Login extends Component {
 }
 
 // Redux
-// 第三步：定义数据变化后派发规则
+// Step three: Define distribution rules after data changes
 function mapStateToProps(state) {
   return {
     userinfo: state.userinfo
   }
 }
 
-// 第四步：触发规则变化
+// Step Fourth: Triggering rule changes
 function mapDispatchToProps(dispatch) {
   return {
-    // userInfoActions 使用 update()
+    // userInfoActions use update()
     userInfoActions: bindActionCreators(userInfoActionsFromOtherFiles, dispatch)
   }
 }
