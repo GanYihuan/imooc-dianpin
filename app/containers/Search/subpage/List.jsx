@@ -104,7 +104,7 @@ class SearchList extends Component {
 
   // Page first rendering, will walk Componentdidmount
   // The page again renders, will not walk componentdidmount, but only go componentdidupdate
-  // Process a search again
+  // Process a search again.
   componentDidUpdate(prevProps, prevState) {
     const keyword = this.props.keyword;
     const category = this.props.category;
