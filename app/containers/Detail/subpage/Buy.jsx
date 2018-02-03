@@ -35,7 +35,7 @@ class Buy extends Component {
   checkStoreState() {
     const id = this.props.id;
     const store = this.props.store;
-    // some: 只要有一个满足就可以
+    // some: As long as there is a satisfaction can be
     store.some((item) => {
       if (item.id === id) {
         this.setState({
@@ -64,10 +64,10 @@ class Buy extends Component {
     const id = this.props.id;
     const storeActions = this.props.storeActions;
     if (this.state.isStore) {
-      // 当前用户已经被收藏，点击取消收藏
+      // The current user has been collected, click Cancel Collection
       storeActions.rm({id: id})
     } else {
-      // 当前用户没有被收藏，点击收藏
+      // The current user is not collected, click the collection
       storeActions.add({id: id})
     }
     this.setState({

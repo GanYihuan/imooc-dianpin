@@ -38,7 +38,7 @@ class Detail extends Component {
   }
 }
 
-// redux
+// redux.
 function mapStateToProps(state) {
   return {}
 }
