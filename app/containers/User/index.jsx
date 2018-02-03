@@ -40,7 +40,7 @@ class User extends Component {
   }
 }
 
-// Redux
+// Redux.
 function mapStateToProps(state) {
   return {
     userinfo: state.userinfo
