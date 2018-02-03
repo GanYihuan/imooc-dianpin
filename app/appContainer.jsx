@@ -118,7 +118,7 @@ class AppContainer extends Component {
                     )}/>
                     {/*
                     /search/:category(/:keyword)
-                     其中/search是路径，/:category是必填参数，(/:keyword)是选填参数。
+                     /search is the path，/:category is a required parameter，(/:keyword) is the optional parameter。
                      */}
                     <Route path={"/search/:category/:keyword?"} render={(props) => (
                         <Search props={props}/>

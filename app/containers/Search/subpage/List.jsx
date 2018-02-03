@@ -30,7 +30,7 @@ class SearchList extends Component {
           {
             this.state.data.length
                 ? <ListCompoent data={this.state.data}/>
-                : <div>{/* 加载中... */}</div>
+                : <div>{/* loading... */}</div>
           }
           {
             this.state.hasMore
@@ -45,13 +45,10 @@ class SearchList extends Component {
     )
   }
 
-  // 页面初次渲染
   componentDidMount() {
-    // 获取首页数据
     this.loadFirstPageData()
   }
 
-  // 获取首页数据
   loadFirstPageData() {
     const cityName = this.props.userinfo.cityName;
     const keyword = this.props.keyword || '';
@@ -60,9 +57,7 @@ class SearchList extends Component {
     this.resultHandle(result);
   }
 
-  // 加载更多数据
   loadMoreData() {
-    // 记录状态
     this.setState({
       isLoadingMore: true
     });
@@ -74,9 +69,7 @@ class SearchList extends Component {
     this.resultHandle(result);
   }
 
-  // 处理数据
   resultHandle(result) {
-    // 增加 page 计数
     const page = this.state.page;
     this.setState({
       page: page + 1
@@ -98,7 +91,9 @@ class SearchList extends Component {
           this.setState({
             hasMore: hasMore,
             isLoadingMore: false,
-            // 注意，这里讲最新获取的数据，拼接到原数据之后，使用 concat 函数
+            // Note that this is the latest available data,
+            // and after stitching to the original data,
+            // use the CONCAT function
             data: this.state.data.concat(data),
           })
         })
@@ -107,19 +102,19 @@ class SearchList extends Component {
         })
   }
 
-  // 页面初次渲染，会走componentDidMount
-  // 页面再次渲染，就不会走componentDidMount，而只走componentDidUpdate
-  // 处理重新搜索
+  // Page first rendering, will walk Componentdidmount
+  // The page again renders, will not walk componentdidmount, but only go componentdidupdate
+  // Process a search again
   componentDidUpdate(prevProps, prevState) {
     const keyword = this.props.keyword;
     const category = this.props.category;
-    // 搜索条件完全相等时，忽略。重要！！！
+    // Ignored when search conditions are exactly equal. IMPORTANT!!!
     if (keyword === prevProps.keyword && category === prevProps.category) {
       return
     }
-    // 重置 state
+    // Reset State
     this.setState(initialState);
-    // 重新加载数据
+    // Reload data agan
     this.loadFirstPageData();
   }
 }

@@ -42,7 +42,7 @@ class SearchInput extends Component {
 
   changeHandle(e) {
     this.setState({
-      // <input/> value
+      // <input/> value.
       value: e.target.value
     })
   }
