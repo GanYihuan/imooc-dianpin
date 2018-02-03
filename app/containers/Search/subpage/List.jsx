@@ -119,7 +119,7 @@ class SearchList extends Component {
   }
 }
 
-// redux
+// redux.
 function mapStateToProps(state) {
   return {
     userinfo: state.userinfo
