@@ -1,14 +1,12 @@
 import React from 'react';
 import {render} from 'react-dom';
-// redux.
+// redux
 import {Provider} from 'react-redux';
 import configureStore from './store/configureStore';
-// react-router!
 // when development react-native use 'react-router-native'
 // otherwise use 'react-router-dom'
 import {BrowserRouter, HashRouter} from 'react-router-dom';
 import AppContainer from './appContainer';
-// style.
 import './static/css/common.less';
 import './static/css/font.less';
 
@@ -24,7 +22,7 @@ const store = configureStore();
 // Provider, store={store}: passed store
 render(
     <Provider store={store}>
-      <HashRouter basename="/">
+      <HashRouter basename={'/'}>
         <AppContainer/>
       </HashRouter>
     </Provider>
