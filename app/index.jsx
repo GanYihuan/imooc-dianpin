@@ -1,10 +1,6 @@
 import React from 'react';
 import {render} from 'react-dom';
-<<<<<<< HEAD
-// redux!
-=======
 // redux
->>>>>>> home-page
 import {Provider} from 'react-redux';
 import configureStore from './store/configureStore';
 // when development react-native use 'react-router-native'
