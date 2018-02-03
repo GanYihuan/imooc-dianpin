@@ -24,27 +24,25 @@ class LoadMore extends Component {
   componentDidMount() {
     const wrapper = this.refs.wrapper;
     const loadMoreFn = this.props.loadMoreFn;
-
     function callback() {
-      // 距离页面顶部距离
+      // Distance from top of page
       const top = wrapper.getBoundingClientRect().top;
-      // 屏幕高度
+      // Screen height
       const windowHeight = window.screen.height;
       if (top && top < windowHeight) {
-        // wrapper: 暴露时加载
+        // wrapper: Load on exposure
         loadMoreFn();
       }
     }
-
-    // 滚动事件
+    // Scrolling events
     let timeAction;
     window.addEventListener('scroll', () => {
-      // 正在加载时不做处理
-      // isLoadingMore: 是加载中吗？
+      // Do not process while loading
+      // isLoadingMore: Is it loaded?
       if (this.props.isLoadingMore) {
         return;
       }
-      // 先清理时间设置
+      // Clean Time Setup First.
       if (timeAction) {
         clearTimeout(timeAction);
       }

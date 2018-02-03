@@ -20,14 +20,14 @@ class Ad extends Component {
           {
             this.state.data.length
                 ? <HomeAd data={this.state.data}/>
-                : <div>加载中...</div>
+                : <div>loading...</div>
           }
         </div>
     )
   }
 
   componentDidMount() {
-    // koa接口
+    // koa
     const result = getAdData();
     result
         .then((res) => {

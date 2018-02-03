@@ -4,6 +4,8 @@ import * as actionTypes from '../constants/store';
 const initialState = [];
 
 
+// redux
+// First step: Calculating rules
 export default function store(state = initialState, action) {
   switch (action.type) {
     case actionTypes.STORE_UPDATE:
@@ -12,7 +14,7 @@ export default function store(state = initialState, action) {
       state.unshift(action.data);
       return state;
     case actionTypes.STORE_RM:
-      return state.filter(item => {
+      return state.filter((item) => {
         if (item.id !== action.data.id) {
           return item
         }

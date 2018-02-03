@@ -13,10 +13,10 @@ import List from './subpage/List';
 class Home extends Component {
   constructor(props) {
     super(props);
-    // 一些无效的改动触发了shouldComponentUpdate函数，也会导致无效的更新
-    // 重写组件的shouldComponentUpdate函数，在每次更新之前判断props和state，
-    // 如果有变化则返回true，无变化则返回false。
-    // 因此，我们在开发过程中，在每个 React 组件中都尽量使用PureRenderMixin
+    // Some invalid changes triggered the Shouldcomponentupdate function, and also caused an invalid update
+    // Rewrite the shouldcomponentupdate function of the component to judge props and state before each update,
+    // Returns true if there is a change, and returns False if there is no change.
+    // Therefore, during the development process, we try to use purerendermixin in every react component
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
 
@@ -45,18 +45,18 @@ class Home extends Component {
   }
 }
 
-// 第三步：定义数据变化后派发规则
-// reducers/index.js: 里的返回值能成为state
-// userinfo: 变成props里的一个能用的参数 userinfo
-// 数据变化了，this.props.userinfo会立马更新
+// Step three: Define distribution rules after data changes
+// reducers/index.js: The return value can become state
+// userinfo: become a props parameter: userinfo
+// when data change，this.props.userinfo will change
 function mapStateToProps(state) {
   return {
     userinfo: state.userinfo
   }
 }
 
-// 第四步：触发规则变化
-// appActionList: 变成props里的一个能用的参数 appActionList
+// Step Fourth: Triggering rule changes
+// appActionList: become a props parameter: appActionList
 // appActions: dianpin/app/actions/app.js
 function mapDispatchToProps(dispatch) {
   return {

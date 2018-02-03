@@ -13,7 +13,6 @@ class CommentItem extends React.Component {
   render() {
     // 获取数据
     const item = this.props.data;
-
     return (
         <div className={styles["comment-item"]}>
           <h3>

@@ -1,16 +1,19 @@
 import React, {Component} from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
+// redux
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {HashRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 import * as userInfoActionsFromOtherFiles from '../../actions/userinfo';
+// router
+import {HashRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
+// Compnoent
 import Header from '../../components/Header/index'
 import LoginComponent from './subpage/LoginComponent';
 
 
 class Login extends Component {
-  constructor(props, context) {
-    super(props, context);
+  constructor(props) {
+    super(props);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = {
       checking: true
@@ -20,7 +23,7 @@ class Login extends Component {
   render() {
     return (
         <div>
-          <Header title={"login"}/>
+          <Header title={'login'}/>
           {
             this.state.checking
                 ? <div>{/* waiting */}</div>
@@ -32,22 +35,6 @@ class Login extends Component {
 
   componentDidMount() {
     this.docheck();
-  }
-
-  // handle login success
-  loginHandle(username) {
-    // redux
-    const actions = this.props.userInfoActions;
-    let userinfo = this.props.userinfo;
-    userinfo.username = username;
-    actions.update(userinfo);
-    // appContainer: line57
-    const router = this.props.match.params.router;
-    if (router) {
-      this.props.history.push(router);
-    } else {
-      this.goUserPage();
-    }
   }
 
   // check login or not
@@ -64,6 +51,23 @@ class Login extends Component {
 
   goUserPage() {
     this.props.history.push('/user');
+  }
+
+  // handle login success
+  loginHandle(username) {
+    // redux
+    const actions = this.props.userInfoActions;
+    let userinfo = this.props.userinfo;
+    userinfo.username = username;
+    actions.update(userinfo);
+    // get :router
+    // appContainer: <Route path={"/login/:router?"}
+    const router = this.props.match.params.router;
+    if (router) {
+      this.props.history.push(router);
+    } else {
+      this.goUserPage();
+    }
   }
 }
 

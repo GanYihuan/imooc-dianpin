@@ -1,15 +1,17 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
+// data
+import CommentData from '../../../../mockServer/detail/comment';
 import {getCommentData} from '../../../fetch/detail/detail';
+// component
 import ListComponent from '../../../components/CommentList';
 import LoadMore from '../../../components/LoadMore';
-import CommentData from '../../../../mockServer/detail/comment';
 import styles from './style.less';
 
 
-class Comment extends React.Component {
-  constructor(props, context) {
-    super(props, context);
+class Comment extends Component {
+  constructor(props) {
+    super(props);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = {
       data: [],
@@ -45,16 +47,15 @@ class Comment extends React.Component {
     this.loadFirstPageData();
   }
 
-  // 获取首页数据
+  // simillar to loadMoreData
   loadFirstPageData() {
     const id = this.props.id;
     const result = getCommentData(0, id);
     this.resultHandle(result)
   }
 
-  // 加载更多数据
+  // simillar to loadFirstPageData
   loadMoreData() {
-    // 记录状态
     this.setState({
       isLoadingMore: true
     });
@@ -64,18 +65,16 @@ class Comment extends React.Component {
     this.resultHandle(result);
   }
 
-  // 处理数据
   resultHandle(result) {
     result
-        .then(res => {
+        .then((res) => {
           if (res.ok) {
             return res.json()
           } else {
             return CommentData
           }
         })
-        .then(json => {
-          // 增加 page
+        .then((json) => {
           const page = this.state.page;
           const hasMore = json.hasMore;
           const data = json.data;
@@ -87,7 +86,7 @@ class Comment extends React.Component {
             data: this.state.data.concat(data)
           })
         })
-        .catch(err => {
+        .catch((err) => {
           console.error('详情页获取用户评论数据出错, ', err.message);
         })
   }

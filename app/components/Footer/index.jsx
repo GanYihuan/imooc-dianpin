@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
+// redux
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {connect} from 'react-redux';
+// router
 import {Link} from 'react-router-dom';
 import styles from './style.less';
 
@@ -12,7 +14,7 @@ class Footer extends Component {
   }
 
   render() {
-    //    /Users/ganyihuan/Documents/Code/Web/RN/dianpin/app/actions/app.js
+    //  app/actions/app.js
     const menu = this.props.app.location;
     return (
         <div>
@@ -26,21 +28,21 @@ class Footer extends Component {
                       {
                         menu === 1
                             ? <span className={styles["active"]}>首页</span>
-                            : <Link to="/"><span>首页</span></Link>
+                            : <Link to={'/'}><span>首页</span></Link>
                       }
                     </li>
                     <li>
                       {
                         menu === 3
                             ? <span className={styles["active"]}>发现</span>
-                            : <Link to="/search/all"><span>发现</span></Link>
+                            : <Link to={'/search/all'}><span>发现</span></Link>
                       }
                     </li>
                     <li>
                       {
                         menu === 4
                             ? <span className={styles["active"]}>我的</span>
-                            : <Link to="/user"><span>我的</span></Link>
+                            : <Link to={'/user'}><span>我的</span></Link>
                       }
                     </li>
                   </ul>
@@ -49,12 +51,9 @@ class Footer extends Component {
         </div>
     )
   }
-
-  componentDidMount() {
-
-  }
 }
 
+// redux
 function mapStateToProps(state) {
   return {
     app: state.app

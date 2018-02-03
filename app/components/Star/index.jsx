@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import styles from './style.less';
 
 
-class Star extends React.Component {
-  constructor(props, context) {
-    super(props, context);
+class Star extends Component {
+  constructor(props) {
+    super(props);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
 
@@ -15,16 +15,14 @@ class Star extends React.Component {
     if (star > 5) {
       star = star % 5
     }
+    // <i> className,  can't use styles['icon-star']
     return (
         <div className={styles["star-container"]}>
           {
             [1, 2, 3, 4, 5].map((item, index) => {
               const lightClass = star >= item ? styles["light"] : '';
               return (
-                  <i
-                      key={index}
-                      className={'icon-star ' + lightClass}
-                  />
+                  <i key={index} className={'icon-star ' + lightClass}/>
               )
             })
           }

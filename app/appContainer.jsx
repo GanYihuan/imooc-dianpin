@@ -56,8 +56,8 @@ const User = (props) => (
     </Bundle>
 );
 
-// match={props.props.match}: 传递了params, redux所有参数
-// /detail/:id ->  /:id 参数
+// match={props.props.match}: passed params, redux all parameters
+// /detail/:id ->  /:id  it's parameters
 const Login = (props) => (
     <Bundle load={LoginContainer}>
       {
@@ -74,10 +74,12 @@ const Login = (props) => (
 const Detail = (props) => (
     <Bundle load={DetailContainer}>
       {
-        (Detail) => <Detail
-            history={props.props.history}
-            match={props.props.match}
-        />
+        (Detail) => (
+            <Detail
+                history={props.props.history}
+                match={props.props.match}
+            />
+        )
       }
     </Bundle>
 );
@@ -94,8 +96,8 @@ const NotFound = (props) => (
 
 
 class AppContainer extends Component {
-  constructor(props, context) {
-    super(props, context);
+  constructor(props) {
+    super(props);
     // Avoid invalid rendering
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = {
@@ -112,29 +114,55 @@ class AppContainer extends Component {
                 ?
                 <div id={"app"}>
                   <Switch>
-                    <Route exact path={"/"} component={HomeContainer}/>
-                    <Route exact path={"/city"} render={(props) => (
-                        <City props={props}/>
-                    )}/>
+                    <Route
+                        exact
+                        path={"/"}
+                        component={HomeContainer}
+                    />
+                    <Route
+                        exact
+                        path={"/city"}
+                        render={(props) => (
+                            <City props={props}/>
+                        )}
+                    />
                     {/*
                     /search/:category(/:keyword)
+<<<<<<< HEAD
                      /search is the path，/:category is a required parameter，(/:keyword) is the optional parameter。
+=======
+                     /search it's path，/:category it's required parameters，(/:keyword) it's optional parameters。
+>>>>>>> master
                      */}
-                    <Route path={"/search/:category/:keyword?"} render={(props) => (
-                        <Search props={props}/>
-                    )}/>
-                    <Route path={"/detail/:id"} render={(props) => (
-                        <Detail props={props}/>
-                    )}/>
-                    <Route path={"/user"} render={(props) => (
-                        <User props={props}/>
-                    )}/>
-                    <Route path={"/login/:router?"} render={(props) => (
-                        <Login props={props}/>
-                    )}/>
-                    <Route render={(props) => (
-                        <NotFound props={props}/>
-                    )}/>
+                    <Route
+                        path={"/search/:category/:keyword?"}
+                        render={(props) => (
+                            <Search props={props}/>
+                        )}
+                    />
+                    <Route
+                        path={"/detail/:id"}
+                        render={(props) => (
+                            <Detail props={props}/>
+                        )}
+                    />
+                    <Route
+                        path={"/user"}
+                        render={(props) => (
+                            <User props={props}/>
+                        )}
+                    />
+                    <Route
+                        path={"/login/:router?"}
+                        render={(props) => (
+                            <Login props={props}/>
+                        )}
+                    />
+                    <Route
+                        render={(props) => (
+                            <NotFound props={props}/>
+                        )}
+                    />
                   </Switch>
                   <FooterContainer history={history}/>
                 </div>
@@ -147,12 +175,12 @@ class AppContainer extends Component {
 
   componentDidMount() {
     let cityName = LocalStore.getItem(CITYNAME);
-    // 不希望cityName为undefind或null
-    // 这是唯一用 == 号地方，其它时候用 ===
+    // don't want cityName undefind/null
+    // the only way use '=='，otherwise use '==='
     if (cityName == null) {
       cityName = '上海'
     }
-    // 城市信息保存到redux中，redux能实现数据共享
+    // city message saved into redux，redux can shared data
     // update: app/actions/userinfo.js
     this.props.userInfoActions.update({
       cityName: cityName
@@ -164,14 +192,16 @@ class AppContainer extends Component {
 }
 
 // Redux
-// 第三步：定义数据变化后派发规则
+// third step：Define distribution rules after data changes
+// state Passed into react as a property
 function mapStateToProps(state) {
   return {
     userinfo: state.userinfo
   }
 }
 
-// 第四步：触发规则变化
+// Fourth Step：触发规则变化
+// action Passed into react as a property
 function mapDispatchToProps(dispatch) {
   return {
     userInfoActions: bindActionCreators(userInfoActionsFromOtherFiles, dispatch)

@@ -3,11 +3,11 @@ import rootReducer from '../reducers';
 
 
 // redux
-// 第二步: 根据规则生成 store
-// rootReducer:总规则
+// Second Step: Generate from Rule store
+// rootReducer: General rules
 export default function configureStore(initialState) {
   const store = createStore(rootReducer, initialState,
-      // devToolsExtension: chrome 下的开发工具 React, Redux
+      // devToolsExtension: chrome' Development tools: React, Redux
       window.devToolsExtension ? window.devToolsExtension() : undefined
   );
   return store;

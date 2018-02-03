@@ -2,7 +2,7 @@ import * as userTypes from '../constants/userinfo';
 
 
 // redux
-// 第一步：计算规则
+// First step: Calculating rules
 export default function userinfo(state = {}, action) {
   switch (action.type) {
     case userTypes.USERINFO_UPDATE:
