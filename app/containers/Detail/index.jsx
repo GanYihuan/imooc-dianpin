@@ -18,8 +18,8 @@ class Detail extends Component {
   }
 
   render() {
-    // 获取路由 app/appContainer.jsx
-    // 里的参数id,  path="/detail/:id"
+    // Get route app/appContainer.jsx
+    // Parameter ID,  path="/detail/:id"
     const id = this.props.match.params.id;
     return (
         <div>
@@ -45,7 +45,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    // appActionList 使用 menu
+    // appActionList use menu
     appActionList: bindActionCreators(appActions, dispatch)
   }
 }
