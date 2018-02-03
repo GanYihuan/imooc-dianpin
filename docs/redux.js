@@ -27,7 +27,7 @@ function counter(state = 0, action) {
 }
 
 
-// 第二步: 根据规则生成 store
+// 第二步: 根据规则生成 store.
 // Create a Redux store holding the state of your app.
 // Its API is { subscribe, dispatch, getState }.
 let store = createStore(counter);
